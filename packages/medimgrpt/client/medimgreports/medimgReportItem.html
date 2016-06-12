@@ -1,0 +1,57 @@
+<template name="medimgReportItem">
+    <div class="report_status_box">
+        {{#if equals state '已新建'}}
+        <div class="report_status report_status_purple">{{state}}</div>
+        {{/if}}
+        {{#if equals state '编辑中'}}
+            <div class="report_status report_status_yellow">{{state}}</div>
+        {{/if}}
+        {{#if equals state '已保存'}}
+            <div class="report_status report_status_orange">{{state}}</div>
+        {{/if}}
+        {{#if equals state '已审核'}}
+            <div class="report_status report_status_green">{{state}}</div>
+        {{/if}}
+        {{#if equals state '已打回'}}
+            <div class="report_status report_status_red">{{state}}</div>
+        {{/if}}
+        {{#if equals state '已打印'}}
+            <div class="report_status report_status_gray">{{state}}</div>
+        {{/if}}
+    </div>
+    <!--<div class="col-lg-4">-->
+        <!--<div class="pull-right" style="margin-right: 3px;">-->
+            <!--&lt;!&ndash;<a href="{{pathFor route='reportPreview'}}" target="_blank" title="打印" ><i class="fa fa-print"></i></a>&ndash;&gt;-->
+        <!--</div>-->
+        <!--<div class="contact-box">-->
+            <!--&lt;!&ndash;<a href="{{pathFor route='medimgReportDetail'}}">&ndash;&gt;-->
+            <!--<a id="showmedimgReportModalDiv" class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal" href="#showmedimgReportModal">-->
+
+                <div class="col-sm-12 text-left">
+                    <p class="m-b">
+                        <strong class="font-size-24">{{pat}}</strong>
+                        <span class="font-gray">
+                            <small class="m-r-xs m-l-sm">{{sex}}</small>
+                            <small>{{age}}</small>
+                        </span>
+                    </p>
+                    <div class="r_content">
+                        <div class="col-lg-6 col-md-12 col-sm-12 font-gray word-break no-p-l">
+                            <strong class="m-r-sm">检查部位:</strong>{{exmpt}}<br />
+                            <strong  class="m-r-sm">检查项目:</strong>{{exmitm}}
+                        </div>
+                        <div class="col-lg-6 col-md-12 col-sm-12 font-gray word-break no-p-l">
+                            <strong  class="m-r-sm">检查医生:</strong>{{doc}}<br />
+                            <strong>申请来源:</strong>{{apldoc}}
+                        </div>
+                        <div class="col-sm-12 font-gray word-break no-p-l">
+                            <strong class="m-r-sm">开始时间:</strong>{{completeDate st}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="clearfix"></div>
+            <!--</a>-->
+        <!--</div>-->
+    <!--</div>-->
+</template>

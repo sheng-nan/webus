@@ -1,0 +1,51 @@
+<template name="patientManage">
+    <div class="animated fadeInRight">
+        <div class="row m-t">
+            <form id="patientListQuery">
+                <div class="col-lg-11 col-md-10 col-sm-9 col-xs-8">
+                    <input type="text" name="patientListQueryPara" placeholder="姓名或拼音缩写" class="form-control">
+                </div>
+            </form>
+            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-4">
+                <a id="addPatientDiv" class="text-center font-color-white font-weight-lighter add_user_btn"
+                   data-toggle="modal" href="#addPatientModal">
+                    <div class="navy-bg add_user_btn">
+                        <i class="fa fa-plus fa-2x m-t-xs"></i>
+                    </div>
+                </a>
+
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+
+        <div class="row m-t">
+            {{#each patientList}}
+                <div class="col-max-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 word-break">
+                    <div class="contact-box">
+                        {{> patientCard doc=this ws=isWS}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+
+    </div>
+    {{>patientAdd}}
+    {{>patientEdit}}
+    {{>patientDelete}}
+    <div class="modal fade" id="addPatientWorkListModal" tabindex="-1" role="dialog" aria-labelledby="addPatWorkListModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span></button>
+                    <h4 class="modal-title" id="addPatWorkListModalLabel">添加工作流</h4>
+                </div>
+                <div class="modal-body">
+                    {{>addWl}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

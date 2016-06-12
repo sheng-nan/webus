@@ -1,0 +1,38 @@
+<template name="dicomList">
+    <div class="ibox">
+        <div class="ibox-title ibox-title-gray">
+            <a href="{{pathFor route='uploadDicom'}}" class="btn btn-primary pull-right" target="_blank">上传</a>
+            <span class="m-t-sm m-b-sm">放射影像</span>
+        </div>
+        <div class="ibox-content">
+
+            <table class="table table-hover table-striped">
+                <thead>
+
+                <tr>
+                    <th>患者姓名</th>
+                    <th>日期</th>
+                    <th>Modality</th>
+                    <th>序列个数</th>
+                    <th>图片个数</th>
+                    <th>描述</th>
+                    <th>查看</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{# each dicomList}}
+                    <tr>
+                        <td>{{pn}}</td>
+                        <td>{{simpleDate sd}}</td>
+                        <td>{{mod}}</td>
+                        <td>{{snum}}</td>
+                        <td>{{ni}}</td>
+                        <td>{{des}}</td>
+                        <td><a href="{{pathFor route='dicomStudies'}}" target="_blank">查看</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,71 @@
+<!--医生处理患者申请的会诊，填写会诊申请单-->
+<template name="docRequisition">
+        <div class="col-sm-6 border-right">
+            <div class="ibox float-e-margins">
+                <h4>会诊申请单</h4>
+                <hr />
+                <div class="ibox-content no-borders">
+                    <form class="form-horizontal" id="docRequisitionForm">
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">申请人</label>
+
+                            <div class="col-lg-9 col-md-9"><input type="input" class="form-control"
+                                                          value="{{currentConsultation.prmdoc}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">会诊目的</label>
+
+                            <div class="col-lg-9 col-md-9"><input type="input" name="conpur" required placeholder="会诊目的"
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">初步诊断</label>
+
+                            <div class="col-lg-9 col-md-9"><input type="input" name="initdiag" required placeholder="初步诊断"
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">会诊模式</label>
+                            <div class="col-lg-9 col-md-9">
+                                <div class="radio radio-info radio-inline">
+                                    <input type="radio" id="conmod1" value="分时" name="conmod" checked="">
+                                    <label for="inlineRadio1"> 分时 </label>
+                                </div>
+                                <div class="radio radio-inline">
+                                    <input type="radio" id="inlineRadio2" value="实时" name="conmod">
+                                    <label for="inlineRadio2"> 实时 </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">邀请专家</label>
+
+                            <div class="col-lg-9 col-md-9">
+                                {{#each doctors}}
+                                    <div class="checkbox checkbox-primary pull-left m-r-sm">
+                                        <input type="checkbox" id="{{_id}}checkbox" name="condocs"
+                                               data-id="{{_id}}" data-name="{{profile.name}}">
+                                        <label for="{{_id}}checkbox">{{profile.doctor.hos}}-{{profile.name}}</label>
+                                    </div>
+                                {{/each}}
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group"><label class="col-lg-3 col-md-3 control-label">患者申请</label>
+
+                            <div class="col-lg-9 col-md-9">
+                                <p class="m-t-xs">
+                                    <span class="m-r-xs">{{currentConsultation.pat}}</span>
+                                    <span class="m-r-xs">申请时间:{{completeDate currentConsultation.patreq.st}}</span>
+                                    <span class="m-r-xs">自述:{{currentConsultation.patreq.condition}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-9 col-md-offset-3 col-md-9">
+                                <button class="btn btn-primary" type="submit">申请会诊</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+</template>

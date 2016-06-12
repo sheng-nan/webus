@@ -1,0 +1,20 @@
+<template name="cameraCapture">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <span>超声采集</span>
+            <div class="pull-right">
+                <a class="label label-primary" id="capture"><i class="fa fa-camera"></i></a>
+            </div>
+        </div>
+        <div class="ibox-content box-full-height">
+            <div>
+                <device type="media" id="video"></device>
+            </div>
+            <div>
+                <video autoplay class="videostream" poster="img/black.png"></video>
+            </div>
+            <canvas height="80" width="110" style="display: none"></canvas>
+            {{>captureImgList}}
+        </div>
+    </div>
+</template>

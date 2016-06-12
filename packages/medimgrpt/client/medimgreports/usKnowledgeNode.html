@@ -1,0 +1,16 @@
+<template name="usKnowledgeNode">
+    <div class="row animated fadeInRight">
+        <form id="usKnowledgeNodeListQuery">
+            <div class="col-lg-12">
+                <input type="text" name="usKnowledgeNodes" placeholder="search.." class="form-control">
+            </div>
+        </form>
+    </div>
+    <div class="row m-t animated fadeInRight">
+        <ul class="col-lg-12 connectList agile-list">
+            {{#each usKnowledgeNodes}}
+                {{> usKnowledgeNodeCard }}
+            {{/each}}
+        </ul>
+    </div>
+</template>

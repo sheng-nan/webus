@@ -1,0 +1,42 @@
+<template name="captureImgList">
+    <div class="lightBoxGallery m-t">
+        <div class="row">
+        {{#each imgs}}
+            <div id="" class="img-span col-xs-3 col-sm-6 col-md-3 m-b-xs">
+                <div class="img-box {{#if print}}img-checked{{/if}}">
+                    <span class="operate_btn none">
+                        <a id="img-show-btn" class="m-r-xs"><i class="fa fa-eye fa-2x"></i></a>
+                        <a id="img-close-btn" class="m-r-xs"><i class="fa fa-times fa-2x"></i></a>
+                    </span>
+                    <a title="截图">
+                        <img src="{{url}}" class="img-responsive"
+                                       name="captureImage" draggable="false"
+                                      >
+                    </a>
+                </div>
+            </div>
+        {{/each}}
+        </div>
+        <div class="clearfix"></div>
+        <!--<div id="big-img-div" class="none" style="z-index:1000;position:absolute;">-->
+            <!--<a class="pull-right" id="pre-close-btn" style="margin-bottom: -15px"><i class="fa fa-times"></i></a>-->
+            <!--<img src="">-->
+        <!--</div>-->
+
+        <div id="bigImgModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="bigImgDivLabel" aria-hidden="true" >
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header text-center no-borders">
+                        <span>&nbsp;&nbsp;</span>
+                        <button type="button" class="close font-size-16" data-dismiss="modal" aria-label="关闭">
+                            <i class="fa fa-times"></i>
+                        </button>
+                    </div>
+                    <div id="big-img-div" class="modal-body text-center">
+                        <img src="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

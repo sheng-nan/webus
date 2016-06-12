@@ -1,0 +1,96 @@
+<!--医生申请会诊，手动选择患者进行会诊申请，填写会诊申请单-->
+<template name="patRequisition">
+    <div class="modal" id="patRequisitionModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">会诊申请单</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content no-borders">
+                            <form class="form-horizontal" id="patRequisitionForm" autocomplete="off"  >
+                                <div class="form-group"><label class="col-lg-2 control-label">申请人</label>
+
+                                    <div class="col-lg-10"><input type="input" class="form-control" name="prmdoc"
+                                                                  value="{{prmdoc}}" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">会诊目的</label>
+
+                                    <div class="col-lg-10"><input type="input" name="conpur" required placeholder="会诊目的"
+                                                                  class="form-control"></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">初步诊断</label>
+
+                                    <div class="col-lg-10"><input type="input" name="initdiag" required
+                                                                  placeholder="初步诊断"
+                                                                  class="form-control"></div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">会诊模式</label>
+
+                                    <div class="col-lg-10">
+                                        <div class="radio radio-info radio-inline">
+                                            <input type="radio" id="conmod1" value="分时" name="conmod" checked="" required>
+                                            <label for="inlineRadio1"> 分时 </label>
+                                        </div>
+                                        <div class="radio radio-inline">
+                                            <input type="radio" id="inlineRadio2" value="实时" name="conmod" required>
+                                            <label for="inlineRadio2"> 实时 </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">邀请专家</label>
+
+                                    <div class="col-lg-10">
+                                        {{#each doctors}}
+                                            <div class="checkbox checkbox-primary pull-left m-r-sm">
+                                                <input type="checkbox" id="{{_id}}checkbox" name="condocs"
+                                                       data-id="{{_id}}" data-name="{{profile.name}}">
+                                                <label for="{{_id}}checkbox">{{profile.doctor.hos}}-{{profile.name}}</label>
+                                            </div>
+                                        {{/each}}
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group"><label class="col-lg-2 control-label">会诊患者</label>
+
+                                    <div class="m-b-sm">
+                                        <div class="col-sm-9">
+                                            <div id="search"><input type="text" id="sel_input" placeholder="姓名/拼音简写"
+                                                                    class="form-control position-relative" required/></div>
+                                            <div class="col-sm-12" id="pat_add">
+                                                <ul class="search_list unstyled">
+                                                    {{#each patients}}
+                                                        <li selValue="{{_id}}" data-id="{{_id}}" data-index="{{index}}" data-name="{{profile.name}}">{{profile.name}}
+                                                            &nbsp;&nbsp;{{profile.sex}}
+                                                            &nbsp;&nbsp;{{getAge profile.birthday}}</li>
+                                                    {{/each}}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group"><label class="col-lg-2 control-label">患者自述</label>
+
+                                    <div class="col-lg-10"><input type="input" name="condition" required placeholder="患者自述"
+                                                                  class="form-control"></div>
+                                </div>
+                                <div class="pull-right">
+
+                                    <button type="submit" class="btn btn-primary">申请会诊</button>
+                                    <a class="btn btn-primary" data-dismiss="modal">取消</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

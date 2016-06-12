@@ -1,0 +1,15 @@
+<template name="myCurrentWorklists">
+    <div class="row animated fadeInRight">
+        <div class="col-lg-12">
+                <!--<h3>预约确认</h3>-->
+                <!--  <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
+                <ul class="sortable-list connectList agile-list">
+                    {{#each worklists_qr}}
+                    <div class="worklistItem">
+                        {{> myCurrentWorklisItem}}
+                        </div>
+                    {{/each}}
+                </ul>
+        </div>
+    </div>
+</template>

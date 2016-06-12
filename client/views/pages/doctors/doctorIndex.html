@@ -1,0 +1,47 @@
+<template name="doctorIndex">
+    <div class="Nav-container doctorIndex">
+        <div class="row">
+            <div class="m-t">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="contact-box">
+                        <div class="row">
+                            <div class="text-center font-size-14 line-height-30 col-sm-3 docInfo">
+                                <img alt="image"
+                                     class="img-circle m-b-sm center-block photo-width m-t-xs"
+                                     src="{{photo}}"><br>
+                                <strong class="font-size-24 font-blue">{{profile.name}}</strong><br>
+                                {{profile.doctor.doct}}<br>
+                                <!--{{profile.sex}}-->
+                                <!--{{getAge profile.birthday}}-->
+                                {{profile.mobile}}
+                            </div>
+                            <div class="col-sm-9 line-height-24 docInfo">
+                                <p class="font-size-24">
+                                    <span class="text-navy"><i class="fa fa-hospital-o"></i></span>
+                                    {{profile.doctor.hos}}&nbsp;&nbsp;{{profile.doctor.dep}}
+                                    <button class="btn btn-primary pull-right" id="followBtn">{{#if isFollowed}}取消关注{{else}}关注{{/if}}</button>
+                                </p>
+
+
+                                <hr/>
+                                <address class="text-left line-height-30">
+
+                                    <strong>
+                                        <span class="text-navy"><i class="fa fa-stethoscope"></i></span>
+                                        擅长
+                                    </strong><br> {{profile.doctor.exp}}<br>
+                                    <strong>
+                                        <span class="text-navy"><i class="fa fa-info-circle"></i></span>
+                                        简介
+                                    </strong><br> {{profile.doctor.desc}}<br>
+                                </address>
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

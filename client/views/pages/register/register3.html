@@ -1,0 +1,58 @@
+<!--完善执业信息-->
+<template name="register3">
+    <div class="loginColumns text-center animated fadeInDown " style="width:520px;">
+        <div class="col-sm-9 col-sm-offset-3">
+            <img src="/img/logoBig.png"/>
+            <h2 class="m-b" style="margin-top:15px;margin-bottom:20px;color:#424242"><strong>完善执业信息</strong></h2>
+        </div>
+        <form method="get" class="form-horizontal">
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">医院名称</label>
+                <div class="col-sm-9"><input type="text" style="background:#DDDDDD" class="form-control"></div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">科室名称</label>
+                <div class="col-sm-9"><input type="text" style="background:#DDDDDD" class="form-control"></div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">职业</label>
+                <div class="col-sm-9"><input type="text" style="background:#DDDDDD" class="form-control" placeholder="临床医师"></div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">职称</label>
+                <div class="col-sm-3"><input type="radio" style="margin-top:10px;margin-right:5px !important;" name="sex" checked="checked">主治医师</div>
+                <div class="col-sm-3"><input type="radio" style="margin-top:10px;margin-right:5px !important;" name="sex">副主任医师</div>
+                <div class="col-sm-3"><input type="radio" style="margin-top:10px;margin-right:5px !important;" name="sex">主任医师</div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">资格证书编号</label>
+                <div class="col-sm-9"><input type="text" class="form-control"></div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">资格证书图片</label>
+                <div class="col-sm-5" >
+                    <div style="width:175px;border:1px solid #e5e6e7;background:#fff;">
+                        <img src="/img/zhmodel.jpg" class="img-block"/>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="position:relative;height:130px;">
+                    <a href="javascript:;" class="fileBtn" style="position:absolute;bottom:0;left:0;">选择照片
+                        <input type="file" name="" id="">
+                    </a>
+                </div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">执业证书编号</label>
+                <div class="col-sm-9"><input type="text" class="form-control"></div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" style="font-weight:normal">执业证书图片</label>
+                <div class="col-sm-5" >
+                    <div style="width:175px;border:1px solid #e5e6e7;background:#fff;">
+                        <img src="/img/zhmodel.jpg" class="img-block"/>
+                    </div>
+                </div>
+                <div class="col-sm-3" style="position:relative;height:130px;">
+                    <a href="javascript:;" class="fileBtn" style="position:absolute;bottom:0;left:0;">选择照片
+                        <input type="file" name="" id="">
+                    </a>
+                </div>
+            </div>
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" ></label>
+                <div class="col-sm-9"><button class="btn btn-primary btn-block font-size-16">提交注册信息</button></div>
+            </div>
+        </form>
+    </div>
+</template>

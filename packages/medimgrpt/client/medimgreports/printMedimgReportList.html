@@ -1,0 +1,45 @@
+<template name="printMedimgReportList">
+    <div class="fh-breadcrumb">
+        <!--报告列表-->
+        <div class="fh-column">
+            <div class="full-height-scroll">
+                <input name="usReportsQueryPara" id="usReportsQueryPara" class="form-control" placeholder="Search...">
+                <div id="reportrange" class="form-control">
+                    <i class="fa fa-calendar"></i>
+                    <span id="time_rang"></span> <input type="hidden" name="start" id="start"><input type="hidden" name="end" id="end" ><b class="caret"></b>
+                </div>
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if reportCount}}
+                        {{#each medimgReports}}
+                            <li class="list-group-item" id="{{_id}}">
+                                <a data-toggle="tab" href="#tab-1">
+                                    {{> operationMedimgReportItem }}
+                                </a>
+                            </li>
+                        {{/each}}
+                    {{else}}
+                        <h3>没有符合条件的报告！</h3>
+                    {{/if}}
+                </ul>
+
+            </div>
+        </div>
+        <!--报告列表 end-->
+        <div class="full-height">
+            <div class="full-height-scroll white-bg border-left-right">
+
+                <div class="element-detail-box">
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            {{>reportPreview}}
+                        </div>
+                    </div>
+                </div>
+                {{#if reportCount}}
+                    {{>medimgReportLogForm tag='print'}}
+                {{/if}}
+            </div>
+        </div>
+        <!--报告内容 end-->
+    </div>
+</template>

@@ -1,0 +1,102 @@
+<template name="editPrescription">
+    <div class="modal fade" id="editPrescriptionModal" tabindex="-1" role="dialog" aria-labelledby="editPrescriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:960px;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">编辑处方</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                {{#autoForm  id="editPrescriptionForm" collection="Laniakea.Collection.Prescriptions" doc=selectedPrescription}}
+                    <div class="modal-body">
+                        <fieldset>
+                            {{>afQuickField name="patid" type="hidden"}}
+                            {{>afQuickField name="pat" type="hidden"}}
+                            {{>afQuickField name="age" type="hidden"}}
+                            {{>afQuickField name="sex" type="hidden"}}
+                            {{>afQuickField name="feetype" type="hidden"}}
+                            <div class="col-sm-3">{{>afQuickField name="pat"  label=false disabled='true'}}</div>
+                            <div class="col-sm-3">{{>afQuickField name="age"  label=false disabled='true'}}</div>
+                            <div class="col-sm-3">{{>afQuickField name="sex" label=false disabled='true'}}</div>
+                            <div class="col-sm-3">{{>afQuickField name="feetype" label=false disabled='true'}}</div>
+                            <!--{{>afQuickField name="pat" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" disabled='true'}}-->
+                            <!--{{>afQuickField name="age" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" disabled='true'}}-->
+                            <!--{{>afQuickField name="doc" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" disabled='true'}}-->
+                            {{>afQuickField name="patstate" options="allowed" type="select-checkbox-inline" template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-9"}}
+                            <!--{{>afQuickField name="birthday" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" value=currentoutmedrecord.brithday}}-->
+                            <div class="form-group" data-required="true">
+                                <label class="col-sm-2 control-label font-size-14">用药列表</label>
+                                <div class="col-sm-10" id="drugs">
+                                    <table class="footable gray-bg border-bottom table table-stripped toggle-arrow-tiny" data-page-size="15">
+                                        <thead>
+                                        <tr class="border-left-right border-top">
+                                            <th>名称</th>
+                                            <th data-hide="phone">规格</th>
+                                            <th data-hide="phone">单价</th>
+                                            <th data-hide="phone">数量</th>
+                                            <th data-hide="phone">单位</th>
+                                            <th data-hide="phone">用量</th>
+                                            <th data-hide="phone">用法</th>
+                                            <th data-hide="phone">皮试</th>
+                                            <th class="text-right">操作</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {{#each drugs}}
+                                            <tr class="border-left-right">
+                                                <td>{{name}}</td>
+                                                <td>{{df}}</td>
+                                                <td>{{price}}</td>
+                                                <td>{{number}}</td>
+                                                <td>{{du}}</td>
+                                                <td>{{dosage}}</td>
+                                                <td>{{usage}} </td>
+                                                <td>{{skt}}</td>
+                                                <td class="text-right">
+                                                    <div class="btn-group">
+                                                        <a class="delDrugListBtn btn btn-primary fa fa-minus"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {{/each}}
+                                        <tr class="border-left-right">
+                                            <td colspan="2">
+                                                <div id="search_drug">
+                                                    <input id="edit_drugId" type="hidden" required>
+                                                    <input class="b-g" placeholder="查询药品" id="edit_drug_input"  style="width:186px" required>
+                                                </div>
+                                                {{>drugOption}}
+                                            </td>
+                                            <td><input placeholder="单价" style="width:40px" id="edit_price" disabled></td>
+                                            <td><input class="b-g" placeholder="数量" value="1" type="number" style="width:40px" id="edit_number"></td>
+                                            <td><input placeholder="单位" style="width:40px" id="edit_drugUnit" disabled></td>
+                                            <td><input class="b-g" placeholder="用量" style="width:70px" id="edit_dosage"></td>
+                                            <td><input class="b-g" placeholder="用法" style="width:70px" id="edit_usage"></td>
+                                            <td><input id="edit_skinTest" type="checkbox" value="是" style=""/>皮试</td>
+                                            <td class="text-right">
+                                                <div class="btn-group">
+                                                    <a id="addDrugListBtn" class="btn btn-primary fa fa-plus"></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            {{>afQuickField name="fee" type="hidden"}}
+                            {{>afQuickField name="fee" template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10" disabled="true"}}
+                            <!--{{>afQuickField name="company" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                            <!--{{>afQuickField name="drugs" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                            <div></div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                    </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,29 @@
+<template name="doctorList">
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-xs-12 m-t">
+                <div class="input-group">
+                    <input type="text" name="doctorSi" placeholder="搜索姓名/拼音缩写"
+                           class="input-sm form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-sm btn-blue"><i class="fa fa-search"></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-t">
+            <div class="m-t">
+                {{#each doctors}}
+                    <div class="col-max-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 word-break">
+                        <div class="contact-box max-height">
+                            {{>doctorItm}}
+                        </div>
+                    </div>
+                {{/each}}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+</template>

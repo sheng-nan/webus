@@ -1,0 +1,77 @@
+<template name="getPrescription">
+    <div>
+        <div class="modal-body">
+            <div class="reheight">
+                <!--startprint1-->
+                <div id="printDiv">
+                    <table width="100%">
+                        <tr>
+                            <td class="text-center font-size-30" style="color:#000;">
+                                <strong>{{hos}}</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="text-center font-size-18">
+                <span>
+                    <strong>取药凭单</strong>
+                </span><input type="hidden" value="{{selectedPrescription._id}}" id="prescription_id">
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="vertical-top">
+                        <tr style="height:20px;">
+                            <td><strong>姓名:</strong>&nbsp;{{ selectedPrescription.pat }}&nbsp;</td>
+                            <td><strong>性别:</strong>&nbsp;{{ selectedPrescription.sex }}&nbsp;</td>
+                            <td><strong>年龄:</strong>&nbsp;{{ selectedPrescription.age }}&nbsp;</td>
+                        </tr>
+                        <tr style="height:20px;">
+                            <td><strong>检查医生:</strong>&nbsp;{{ selectedPrescription.doc }}&nbsp;</td>
+                            <td><strong>费别:</strong>&nbsp;{{ selectedPrescription.feetype }}&nbsp;</td>
+                            <td><strong>费用:</strong>&nbsp;{{ selectedPrescription.fee }}￥&nbsp;</td>
+
+                        </tr>
+                        <tr style="height:20px;">
+                            <td><strong>病生状态:</strong>&nbsp;{{ selectedPrescription.patstate }}&nbsp;</td>
+                            <td><strong>初始诊断:</strong>&nbsp;{{ selectedPrescription.diag }}&nbsp;</td>
+                            <td><strong>处方状态:</strong>&nbsp;<div class="{{statePreClass selectedPrescription.state}}">{{ selectedPrescription.state }}</div>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <h3>用药列表</h3>
+                    <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        <thead>
+                        <tr>
+                            <th>名称</th>
+                            <th data-hide="phone">规格</th>
+                            <th data-hide="phone">单价</th>
+                            <th data-hide="phone">数量</th>
+                            <th data-hide="phone">单位</th>
+                            <th data-hide="phone">用量</th>
+                            <th data-hide="phone">用法</th>
+                            <th data-hide="phone">皮试</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each selectedPrescription.drugs }}
+                            <tr>
+                                <td>{{name}}</td>
+                                <td>{{df}}</td>
+                                <td>{{price}}</td>
+                                <td>{{number}}</td>
+                                <td>{{du}}</td>
+                                <td>{{dosage}}</td>
+                                <td>{{usage}} </td>
+                                <td>{{skt}}</td>
+                            </tr>
+                        {{/each}}
+                        </tbody>
+                    </table>
+                    <hr>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">取药</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

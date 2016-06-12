@@ -1,0 +1,71 @@
+<template name="addOutmediaWl">
+    <div class="modal fade" id="addOutmediaWlModal" tabindex="-1" role="dialog" aria-labelledby="addOutmediaWlModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:960px;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">检查申请</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                {{#autoForm  id="addOutmediaWlForm" collection="Laniakea.Collection.Worklists"}}
+                    <div class="modal-body">
+                        <fieldset>
+                            <input type="hidden" value="{{currentoutmedrecord._id}}" id="outmedrecord_id">
+                            <input type="hidden"  id="dep_name">
+                            {{>afQuickField name="patid"  value=currentoutmedrecord.patid type="hidden"}}
+                            <div class="col-sm-4">{{>afQuickField name="pat"  label=false value=currentoutmedrecord.pat readOnly='readOnly'}}</div>
+                            <div class="col-sm-4">{{>afQuickField name="age"  label=false value=currentoutmedrecord.age readOnly='readOnly'}}</div>
+                            <div class="col-sm-4">{{>afQuickField name="sex" defaultValue=currentoutmedrecord.sex  label=false readOnly='readOnly'}}</div><br>
+                            <div>
+                                {{> afQuickField name='apmt' template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10"}}
+                                {{> afQuickField name='exmdepid' id='exmdepid' template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10" options=depOptions}}
+                                <div><label class="font-size-14 col-sm-2">检查项目</label>{{> afQuickField name='serv' label=false template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-10" options=sersOptions}}</div>
+                                <div>
+                                    <label class="col-sm-2 font-size-14">检查项</label>
+                                    <div class="col-sm-10">
+                                        <table class="table gray-bg m-t">
+                                            <thead>
+                                            <tr class="border-left-right border-top">
+                                                <th>检查部位</th>
+                                                <th>检查项目</th>
+                                                <th>费用</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody><input type="hidden" value="{{depid}}" id="wl_depid">
+                                            {{#each outmediaWlExms}}
+                                                {{>wlExmItem}}
+                                            {{/each}}
+                                            <tr class="border-left-right border-bottom">
+                                                <td><select id="outmedia_exmpt" class="form-control b-g"><option value="">---请选择---</option>
+                                                    {{#each exmptOptions_p}}
+                                                        <option value="{{value}}">{{label}}</option>
+                                                    {{/each}}
+                                                </select></td>
+                                                <td><select id="outmedia_exmitm" class="form-control b-g"><option value="">---请选择---</option>
+                                                    {{#each exmitmAddOptions_p}}
+                                                        <option value="{{value}}">{{label}}</option>
+                                                    {{/each}}
+                                                </select></td>
+                                                <td><div id="itm_fee">{{outmediaItm_fee}}</div></td>
+                                                <td><a class="btn btn-primary fa fa-plus" data-toggle="modal">
+                                                </a></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                {{> afQuickField name='state' template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10" type='hidden' value=addState}}
+                                {{> afQuickField name='desc'  template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10"}}
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,57 @@
+<template name="outMediaRecordEditForm">
+
+    <div class="box-full-height">
+        {{# autoForm id='medimgRecordEditForm' collection='Laniakea.Collection.OutMedRecords' type='update' doc=currentoutmedrecord}}
+            <fieldset>
+                <div class="row">
+                    <div class="col-sm-4">{{> afQuickField name='pat'  placeholder="患者姓名" label=false disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='age' placeholder="患者年龄" label=false disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='sex' placeholder="患者性别" label=false disabled="true"}}</div>
+                    <!--<div class="col-sm-4">{{> afQuickField name='fetp' placeholder="费别" label=false}}</div>-->
+                    <!--<div class="col-sm-4">{{> afQuickField name='rv' placeholder="复诊" label=false}}</div>-->
+                    <!--<div class="col-sm-4">{{> afQuickField name='rvapm' placeholder="复诊预约" label=false}}</div>-->
+                </div>
+                <!--{{> afQuickField name='gm' placeholder="" }}-->
+                <!--{{> afQuickField name='jw' placeholder="" }}-->
+                <!--{{> afQuickField name='jzs' placeholder="" }}-->
+                {{> afQuickField name='zs' placeholder="" }}
+                {{> afQuickField name='xbs' placeholder="" }}
+                <!--{{> afQuickField name='bdck' placeholder="" }}-->
+                {{> afQuickField name='diag' placeholder="" }}
+                <!--{{> afQuickField name='sugst' placeholder="" }}-->
+
+            </fieldset>
+        {{/ autoForm }}
+    </div>
+
+
+    <!--<div class="ibox float-e-margins">-->
+        <!--<div class="ibox-title">-->
+            <!--<h5>病例内容</h5>-->
+            <!--<a class="label label-primary pull-right" id="saveRecord"><i class="fa fa-floppy-o"></i></a>-->
+        <!--</div>-->
+        <!--<div class="ibox-content box-full-height">-->
+            <!--{{# autoForm id='medimgRecordEditForm' collection='Laniakea.Collection.OutMedRecords' type='update'}}-->
+                <!--<fieldset>-->
+                    <!--<div class="row">-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='pat'  placeholder="患者姓名" label=false}}</div>-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='age' placeholder="患者年龄" label=false}}</div>-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='sex' placeholder="患者性别" label=false}}</div>-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='fetp' placeholder="费别" label=false}}</div>-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='rv' placeholder="复诊" label=false}}</div>-->
+                        <!--<div class="col-sm-4">{{> afQuickField name='rvapm' placeholder="复诊预约" label=false}}</div>-->
+                    <!--</div>-->
+                    <!--{{> afQuickField name='gm' placeholder="" }}-->
+                    <!--{{> afQuickField name='jw' placeholder="" }}-->
+                    <!--{{> afQuickField name='jzs' placeholder="" }}-->
+                    <!--{{> afQuickField name='xbs' placeholder="" }}-->
+                    <!--{{> afQuickField name='zs' placeholder="" }}-->
+                    <!--{{> afQuickField name='bdck' placeholder="" }}-->
+                    <!--{{> afQuickField name='diag' placeholder="" id="text1"}}-->
+                    <!--{{> afQuickField name='sugst' placeholder="" id="text2"}}-->
+
+                <!--</fieldset>-->
+            <!--{{/ autoForm }}-->
+        <!--</div>-->
+    <!--</div>-->
+</template>

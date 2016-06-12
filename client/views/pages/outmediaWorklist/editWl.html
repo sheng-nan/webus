@@ -1,0 +1,39 @@
+<template name="editWl">
+    <div class="modal fade" id="editOutmediaWlModal" tabindex="-1" role="dialog" aria-labelledby="editOutmediaWlModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span></button>
+                    <h4 class="modal-title" id="editOutmediaWlModalLabel">{{selectedWorklist.pat}}({{selectedWorklist.sex}}&nbsp;{{selectedWorklist.age}})&nbsp;&nbsp;&nbsp;预约安排</h4>
+                </div>
+
+                    {{#autoForm  id="editOutmediaWlForm"  collection="Laniakea.Collection.Worklists" doc=selectedWorklist
+                    type="update" buttonContent="修改" }}
+                    <div class="modal-body">
+                        <fieldset><input type="hidden" id="edit_dep_name">
+                            {{> afQuickField name='pat' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" id='search_pn' type='hidden'}}
+                            {{> afQuickField name='sex' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" type='hidden'}}
+                            {{> afQuickField name='age' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" type='hidden'}}
+                            {{> afQuickField name='apmt' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9"}}
+                            {{> afQuickField name='exmdepid' id='edit_exmdepid' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" options=depOptions}}
+                            {{> afQuickField name='serv' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" options=sersOptions}}
+                            {{> afQuickField name='exmpt' id='owl_exmpt_edit' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" options=exmptOptions_p}}
+                            {{> afQuickField name='exmitm' id='owl_itm_edit' template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9" options=exmitmAddOptions_p}}
+                            {{> afQuickField name='fee' readOnly='readOnly' value=itm_fee template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9"}}
+                            {{> afQuickField name='desc'  template="bootstrap3-horizontal" label-class="col-sm-3 font-size-14" input-col-class="col-sm-9"}}
+                        </fieldset>
+                        <input type="hidden" name="_id" id="wl_id" value="{{selectedWorklist._id}}">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">确认</button>
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                    {{/autoForm}}
+
+            </div>
+        </div>
+    </div>
+
+</template>

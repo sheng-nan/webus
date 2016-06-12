@@ -1,0 +1,21 @@
+<template name="usKnowledgeNodeItem">
+    <div class="col-lg-4">
+        <div class="pull-right">
+            {{#afModal  class="btn btn-primary" doc=_id title="编辑知识节点" collection="Laniakea.Collection.UsKnowledgeNodes" operation="update"  buttonContent="编辑" omitFields=""
+            template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+                <i class="fa fa-pencil"></i>
+            {{/afModal}}
+            {{#afModal class="btn btn-danger" title="删除知识节点" collection="Laniakea.Collection.UsKnowledgeNodes" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+                <i class="fa fa-trash-o "></i>
+            {{/afModal}}
+        </div>
+        <div class="contact-box">
+                <p><i class="fa"></i> 节点名称：{{knd}}</p>
+                <p><i class="fa"></i> 超声所见：{{usf}}</p>
+                <p><i class="fa"></i> 超声所得：{{ush}}</p>
+                <p><i class="fa"></i> 检查部位：{{exmpt}}</p>
+                <p><i class="fa"></i> 检查项目：{{exmitm}}</p>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</template>

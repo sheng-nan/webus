@@ -1,0 +1,65 @@
+<template name="worklistItem">
+    <li class="{{stateClass state}}">
+        <strong class="font-size-18">{{pat}}</strong>&nbsp;&nbsp;&nbsp;
+        {{sex}}&nbsp;&nbsp;&nbsp;
+        {{age}}<br />
+        <div class="font-gray">
+        {{#if equals state '确认'}}
+        <strong class="m-r-xs">检查医生</strong>{{doc}}<br />
+        <strong class="m-r-xs">检查</strong>{{exmpt}}&nbsp;&nbsp;&nbsp;{{exmitm}}<br />
+        <strong class="m-r-xs">检查费用</strong>{{fee}}<br />
+        {{/if}}
+        {{#if equals state '检查申请'}}
+        <strong class="m-r-xs">检查科室</strong>{{exmdep}}预约确认<br />
+        <strong class="m-r-xs">检查项目</strong>{{setv}}<br />
+        {{/if}}
+        <strong class="m-r-xs">症状描述</strong>{{desc}}
+        <div class="agile-detail">
+            {{#if equals state '预约'}}
+                <a class="pull-right btn btn-xs btn-primary" data-toggle="modal" href="#editWorkListModal">安排</a>
+                {{#afModal class="pull-right btn btn-xs btn-primary m-r-xs" title="删除工作流" collection="Laniakea.Collection.Worklists" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+                    删除
+                {{/afModal}}
+            {{/if}}
+            {{#if equals state '检查申请'}}
+                <a class="pull-right btn btn-xs btn-primary" data-toggle="modal" href="#editWorkListModal">安排</a>
+                {{#afModal class="pull-right btn btn-xs btn-primary m-r-xs" title="删除工作流" collection="Laniakea.Collection.Worklists" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+                    删除
+                {{/afModal}}
+            {{/if}}
+            {{#if equals state '确认'}}
+                <a class="pull-right btn btn-xs btn-primary" data-toggle="modal" href="#editWorkListModal">修改</a>
+                {{#afModal class="pull-right btn btn-xs btn-primary m-r-xs" title="删除工作流" collection="Laniakea.Collection.Worklists" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+                    删除
+                {{/afModal}}
+            {{/if}}
+           <!-- <a href="#" class="pull-right btn btn-xs btn-white">删除</a>-->
+            <i class="fa fa-clock-o"></i> 预约时间{{formatDate apmt}}
+        </div>
+        </div>
+    </li>
+    <!--<div class="pull-right">
+        <a class="btn btn-primary" data-toggle="modal" href="#editWorkListModal">安排&lt;!&ndash;<i class="fa fa-pencil"></i>
+        </a>
+        {{#afModal class="btn btn-danger" title="删除工作流" collection="Laniakea.Collection.Worklists" operation="remove" doc=_id  prompt="确定删除吗?" buttonContent="删除"}}
+            <i class="fa fa-trash-o "></i>
+        {{/afModal}}
+    </div>
+    <div class="contact-box">
+        <div class="col-sm-8">
+            <input type="hidden" value="{{_id}}" id="worklist_id">
+            <address>
+                <strong>患者姓名：{{pat}}</strong><br>
+                性别：{{sex}}<br>
+                年龄：{{age}}<br>
+                预约医生：{{apldoc}}<br>
+                检查部位：{{exmpt}}<br>
+                检查项目：{{exmitm}}<br>
+                预约时间：{{formatDate apmt}}<br>
+                状态：{{state}}<br>
+                备注：{{note}}<br>
+            </address>
+        </div>
+        <div class="clearfix"></div>
+    </div>-->
+</template>

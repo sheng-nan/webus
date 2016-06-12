@@ -1,0 +1,120 @@
+<template name="consultationSession">
+    {{#if load}}
+        <h1>正在准备会诊数据...</h1>
+    {{else}}
+        <div class="white-bg leftBox">
+            <div class="font-YH">
+                <a class="btn btn-success btn-xs m-t-sm" href="#recordVideoModal" data-toggle="modal" title="发送视频">发送视频</a>
+                <a class="btn btn-success btn-xs m-t-sm" href="zoommtg://zoom.us/join?action=join&confno=5325751010&ac=0&mcv=0.92.11227.0929&browser=chrome" target="_blank">实时会诊</a>
+                <a class="btn btn-success btn-xs m-t-sm" title="发送图片" id="uploadImage">上传图片</a>
+                <input type="file"  id="inputImage" class="hidden js-file" accept="image/*">
+                <input type="hidden" class="js-value" data-schema-key="img_url">
+            {{#if isPrmdoc}}
+                <a class="btn btn-success btn-xs m-t-sm" href="#endConsultationModal" data-toggle="modal" title="结束会诊">结束会诊</a>
+            {{/if}}
+            </div>
+            <hr>
+            <div class="chat-mes">
+
+                {{#each currentConsultation.session}}
+                    <div class="mes">
+                        <div class="mesPhoto">
+                            <img src="{{doctorPhoto from}}" alt="photo">
+                        </div>
+                        <div class="mesBox">
+                            <div><strong>{{doctorName from}}</strong> <span class="mes-date"> {{completeDate st}} </span></div>
+                            <div>
+                                {{#if sessionType 'text'}}
+                                    {{content}}
+                                {{/if}}
+                                {{#if sessionType 'video'}}
+                                    <video class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           data-setup=''>
+                                        <source src="{{content}}" type='video/webm'/>
+                                    </video>
+                                {{/if}}
+                                {{#if sessionType 'image'}}
+                                    <a class="fancybox" href="{{content}}" data-fancybox-group="gallery">
+                                        <img alt="图片" src="{{content}}" class="img-responsive"/>
+                                    </a>
+
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                {{/each}}
+            </div>
+            <div class="clearfix"></div>
+            <form id="sessionForm">
+                <div class="chat-message-form">
+                    <div class="mesInput">
+                        <a class="mesLeft"><i class="fa fa-plus"></i></a>
+                        <input type="text" class="mesRight" name="content"
+                                  placeholder="输入消息">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="rightBox gray-bg border-left">
+            <div>
+                {{>patientProfile patient}}
+            </div>
+        </div>
+
+        <div class="modal" id="recordVideoModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <span class="font-size-18">开始录制</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                                aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <device type="media" ></device>
+                        </div>
+                        <div>
+                            <video autoplay poster="img/black.png" id="sessionRecordVideo" width="640" height="264" class="videostream"></video>
+                        </div>
+                        <input type="text" name="videoSecond" value="" />
+                    </div>
+                    <div class="modal-footer">
+                        <a class="btn btn-primary {{hiddenStartButton}}" id="startRecordVideo">开始录制</a>
+                        <a class="btn btn-primary {{hiddenCancelAndSendButton}} " id="sendVideo">发送</a>
+                        <a class="btn btn-primary {{hiddenCancelAndSendButton}}" id="cancelRecordVideo">取消录制</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal" id="endConsultationModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <span class="font-size-18">结束会诊</span>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                                aria-hidden="false">&times;</span>
+                        </button>
+                    </div>
+                    <form class="form-horizontal" id="endConsultationForm">
+                        <div class="modal-body">
+                            <div class="form-group"><label class="col-lg-2 control-label">会诊结果</label>
+
+                                <div class="col-lg-10"><textarea name="conresult" required
+                                                                 class="form-control message-input"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">结束会诊</button>
+                            <a class="btn btn-primary" data-dismiss="modal">取消</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/if}}
+</template>

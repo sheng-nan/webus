@@ -1,0 +1,27 @@
+<template name="medicineReceiving">
+    <div class="fh-breadcrumb">
+        <div class="fh-column border-right">
+            <div class="full-height-scroll">
+                <input name="prescriptionQuery" id="prescriptionQueryParam" class="form-control" placeholder="姓名或拼音缩写">
+                <ul class="list-group elements-list">
+                        {{#each prescriptions}}
+                            {{> prescriptionItem }}
+                        {{/each}}
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="full-height">
+            <div class="full-height-scroll white-bg">
+                <div class="row report_height">
+                    <div class="col-sm-7 border-right">
+                    {{>getPrescription}}
+                        </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</template>

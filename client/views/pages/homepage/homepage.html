@@ -1,0 +1,12 @@
+<template name="homepageMain">
+
+    {{#if isInRole 'doctor'}}
+       {{> patientList}}
+    {{else}}
+        {{#if isInRole 'nurse'}}
+            {{> patientManage}}
+        {{else}}
+            <h1>主面板</h1>
+        {{/if}}
+    {{/if}}
+</template>

@@ -1,0 +1,81 @@
+<template name="consultationWait">
+    <div class="row report_height">
+        <div class="col-sm-6 border-right">
+            <div class="ibox">
+                <h4>待会诊</h4>
+                <hr />
+                <div class="ibox-content no-borders">
+                    <form class="form-horizontal" >
+                        <div class="form-group"><label class="col-lg-2 control-label">申请人</label>
+
+                            <div class="col-lg-10"><input type="input" class="form-control"
+                                                          value="{{currentConsultation.prmdoc}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">会诊目的</label>
+
+                            <div class="col-lg-10"><input type="input" name="conpur" placeholder="会诊目的"
+                                                          value={{currentConsultation.docreq.conpur}} readonly
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">初步诊断</label>
+
+                            <div class="col-lg-10"><input type="input" name="initdiag" placeholder="初步诊断"
+                                                          value={{currentConsultation.docreq.initdiag}} readonly
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">会诊模式</label>
+                            <div class="col-lg-10">
+                                <div class="radio radio-info radio-inline">
+                                    <input type="radio" value="分时" name="conmod" checked="">
+                                    <label for="inlineRadio1"> {{currentConsultation.docreq.conmod}} </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">邀请专家</label>
+
+                            <div class="col-lg-10">
+                                {{#each currentConsultation.condocs}}
+                                    {{name}}{{#if status}}已经接受邀请{{else}}等待接受邀请{{/if}} &nbsp;
+                                {{/each}}
+                            </div>
+                        </div>
+
+                        <div class="form-group"><label class="col-lg-2 control-label">患者申请</label>
+
+                            <div class="col-lg-10">
+                                <p class="m-t-xs">
+                                    <span class="m-r-xs">{{currentConsultation.pat}}</span>
+                                    <span class="m-r-xs">申请时间:{{completeDate currentConsultation.patreq.st}}</span>
+                                    <span class="m-r-xs">自述:{{currentConsultation.patreq.condition}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <a class="btn btn-primary" href="#confirmStartConsultation" data-toggle="modal" >开始会诊</a>
+                                <span>已经有<span class="font-green">{{isInvitedCount}}</span>人接受邀请</span>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="confirmStartConsultation" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">开始会诊</span>
+                </div>
+                <div class="modal-body">
+                    <span>已经有{{isInvitedCount}}人接受邀请</span>，确定开始会诊吗?
+                </div>
+                <div class="modal-footer">
+                    <a class="btn btn-primary" id="startConsultation" data-dismiss="modal">开始会诊</a>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

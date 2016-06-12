@@ -1,0 +1,86 @@
+<template name="outMediaRecordList">
+    <div class="fh-breadcrumb">
+        <div class="fh-column">
+            <div class="full-height-scroll border-right">
+                <input name="outMedRecordQuery" id="outMedRecordQueryParam" class="form-control" placeholder="姓名或拼音缩写">
+
+                <div id="recordrange" class="form-control">
+                    <i class="fa fa-calendar"></i>
+                    <span id="time_rang"></span>
+                    <input type="hidden" name="start" id="start">
+                    <input type="hidden" name="end"   id="end">
+                    <b class="caret"></b>
+                </div>
+
+                <ul class="list-group elements-list border-right" id="outMediaRecordItem">
+                    {{#if recordCount}}
+                        {{#each medRecords}}
+                            <a data-toggle="tab" href="#tab-1" id="omrItem">
+                                <li class="list-group-item {{itemstatus}}" id="{{_id}}">
+                                    {{> outMediaRecordItem }}
+                                </li>
+                            </a>
+                        {{/each}}
+                    {{else}}
+                        <h3 class="text-center">没有符合条件的病例！</h3>
+                    {{/if}}
+                </ul>
+
+            </div>
+        </div>
+
+        {{#if hasSelectedRecord}}
+            <div class="full-height">
+                <div class="full-height-scroll2 white-bg">
+                    <div class="element-detail-box">
+                    <div class="row blCon report_height">
+                        <div class="col-sm-12">
+                            <div class="ibox-title no-borders">
+                                <span>治疗笔记</span>
+                                <button class="btn btn-primary pull-right" id="saveRecord">保存</button>
+                                <button class="btn btn-primary m-r-sm pull-right">查看健康档案</button>
+                            </div>
+                            <hr />
+                            <div class="col-sm-6 CON border-right">
+                                {{>outMediaRecordEditForm}}
+                            </div>
+                            <!--<div class="col-sm-6">-->
+                                <!--<div class="row m-b">-->
+                                    <!--<div class=" col-sm-4 col-sm-offset-2">-->
+                                        <!--<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#changeDrugsModal" id="tzsy">调整药食</button>-->
+                                    <!--</div>-->
+                                    <!--<div class=" col-sm-4">-->
+                                        <!--<button class="btn btn-primary btn-block" data-toggle="modal" data-target="#appointCheckModal" id="yyjc">预约检查</button>-->
+                                    <!--</div>-->
+
+                                <!--</div>-->
+                                <!--<div class="col-sm-12" id="checkCon">-->
+                                    <!--<p>给患者的建议:</p>-->
+                                <!--</div>-->
+                            <!--</div>-->
+
+
+
+                            <div class="col-sm-6 CON">
+                            <div class="row">
+                            <div class="col-sm-12">
+                            {{>prescriptions}}
+                            </div>
+                            <div class="col-sm-12">
+                            {{>outmediaWorklist}}
+                            </div>
+                            </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+        {{/if}}
+
+    </div>
+    {{>changeDrugs}}
+    {{>appointCheck}}
+</template>

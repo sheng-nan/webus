@@ -1,0 +1,46 @@
+<template name="modifySingleReport">
+    <div class="row report_height">
+        <div class="col-sm-10">
+            <table width="100%">
+                <tr>
+                    <td class="text-center font-size-18">
+                        <span>
+                            <strong>打回报告修改</strong>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            {{#autoForm collection="Laniakea.Collection.MedimgReports" id="modifyForm" type="update" doc=selectedReport template="bootstrap3-horizontal" resetOnSuccess="true" preserveForm='false' label-class="col-sm-2" input-col-class="col-sm-9"}}
+                <fieldset>
+                    <div class="col-sm-4">{{> afQuickField name='pat'  disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='age' disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='sex'  disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='doc' disabled="true" }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='apldep' }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='apldoc' }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='room' disabled="true" }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='diag'}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='dev'  }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='exmpt' }}</div>
+                    <div class="col-sm-4">{{> afQuickField name='exmitm'}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='src' disabled="true"}}</div>
+                    <div class="col-sm-4">{{> afQuickField name='state' disabled="true"}}</div>
+                    <div class="clearfix"></div>
+                    {{> afQuickField name='find' placeholder="" rows="5"}}
+                    {{> afQuickField name='hint' placeholder="" rows="5"}}
+                </fieldset>
+            {{/autoForm}}
+        </div>
+        <div class="col-sm-2 border-left rizhi_height">
+            <div class="row">
+                {{#each selectedReport.logs}}
+                    <li class="list-group-item">
+                        <p><a class="text-info" href="#">{{u}}</a>{{a}}了报告</p>
+                        <small class="block text-muted"><i class="fa fa-clock-o"></i> {{completeDate t}}</small>
+                    </li>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

@@ -1,0 +1,94 @@
+<template name="doctorProfile">
+    <div class="tabs-container row">
+
+        <div class="tabs-left">
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#tab-6"><i class="fa fa-info-circle"></i> 个人信息</a></li>
+                <li class=""><a data-toggle="tab" href="#tab-7"><i class="fa fa-lock"></i> 账户信息</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab-6" class="tab-pane active">
+                    <div class="panel-body minHeight">
+                        <form class="m-t" role="form" name="profileForm">
+                            <div class="col-sm-7 col-xs-6">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="text" value="{{currentUser.profile.name}}"
+                                                   class="form-control " placeholder="姓名" name="name" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-12">
+                                        <div class="form-group">
+                                            <input type="text" value="{{currentUser.profile.doctor.doct}}"
+                                                   class="form-control " placeholder="职称" name="doct">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" value="{{currentUser.profile.doctor.exp}}"
+                                                   class="form-control " placeholder="擅长领域" name="exp">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <h5>简介</h5>
+                                        <textarea class="form-control" type="text" rows="5" style="width: 99.9999%;resize:none;"
+                                                  placeholder="简介" name="desc">{{currentUser.profile.doctor.desc}}
+                                        </textarea>
+                                    </div>
+                                    <div class="col-sm-12 m-t">
+                                        <div class={{tipClass}} id="logintip"> {{tip}}</div>
+                                        <div class="col-sm-4">
+                                            <button type="submit" class="btn btn-primary block full-width m-b">
+                                                保存
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-6">
+                                <div class="text-center m-l-lg">
+                                    <img alt="image" src="{{currentUser.profile.photo}}" id="currentImg"
+                                         class="img-circle photo-lg-width m-t-xs img-responsive">
+                                    <img src="" id="cropperImg"
+                                         class="img-circle m-t-xs img-responsive">
+                                </div>
+                                <div class="img_btn" id="bigImgDiv">
+                                    <button type="button" class="btn btn-default js-select-file">选择图片...</button>
+                                    <input type="file"  id="inputImage" class="hidden js-file" accept="image/*">
+                                    <input type="hidden" class="js-value" data-schema-key="img_url">
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+                <div id="tab-7" class="tab-pane">
+                    <div class="panel-body minHeight">
+                        <form class="m-t" role="form" name="accountForm">
+                            <div class="col-sm-7 col-xs-6">
+                                <div class="form-group">
+                                    <input type="password" value="{{currentUser.profile.password}}"
+                                           class="form-control " placeholder="当前密码" name="curPassword" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" value="{{currentUser.profile.password}}"
+                                           class="form-control " placeholder="新密码" name="newPassword" required>
+                                </div>
+                                <div class={{tipClass}} id="logintip"> {{tip}}</div>
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary block full-width m-b">
+                                        保存
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</template>

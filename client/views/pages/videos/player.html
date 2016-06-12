@@ -1,0 +1,13 @@
+<template name="player">
+    <div class="ibox m-t">
+        <div class="ibox-title">{{title}}</div>
+        <div class="ibox-content">
+            <video id="example_video_1" class="video-screen video-js vjs-default-skin" style="width:100% !important;height:700px !important;"
+                   controls preload="auto" height="700" autoplay="autoplay"
+                   poster="{{img}}"
+                   data-setup='{"example_option":true}'>
+                <source src="{{url}}" type='video/mp4'/>
+            </video>
+        </div>
+    </div>
+</template>

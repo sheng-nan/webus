@@ -1,0 +1,51 @@
+<!--webus-->
+<template name="medimgCurrentReportItem">
+        {{#if equals state '已新建'}}
+            <li class="re-box purple-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+        {{#if equals state '编辑中'}}
+            <li class="re-box yellow-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+        {{#if equals state '已保存'}}
+            <li class="re-box orange-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+        {{#if equals state '已审核'}}
+            <li class="re-box green-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+        {{#if equals state '已打回'}}
+            <li class="re-box red-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+        {{#if equals state '已打印'}}
+            <li class="re-box gray-border col-lg-6 position-relative word-break">
+                <span class="re-box-label">{{state}}</span>
+                <strong>{{pat}}</strong>&nbsp;&nbsp;{{sex}}&nbsp;&nbsp;{{age}}&nbsp;&nbsp;{{exmpt}}&nbsp;&nbsp;{{exmitm}}
+                <span class="pull-right font-light-gray date">{{formatDate apmt}}</span>
+                <div class="clearfix"></div>
+            </li>
+        {{/if}}
+</template>

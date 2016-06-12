@@ -1,0 +1,147 @@
+<template name="navigation">
+    <div class="row border-bottom white-bg">
+        <nav class="navbar navbar-static-top" role="navigation">
+            <div class="navbar-header">
+                <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                    <i class="fa fa-reorder"></i>
+                </button>
+                <a href="{{pathFor route="homepageMain"}}" class="navbar-brand font-size-18"><img src="/logo.png" style="margin-top:-10px;"/></a>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar">
+                <ul class="nav navbar-nav font-size-14">
+                    {{#if isInRole 'doctor'}}
+                        <li class="">
+                            <a href="{{pathFor route='mypatients'}}"><i class="fa fa-users"></i> <span
+                                    class="nav-label">我的患者</span> </a>
+                        </li>
+                        <li class="">
+                            <a href="{{pathFor route='doctorList'}}"><i class="fa fa-user-md"></i> <span
+                                    class="nav-label">医生好友</span> </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{{pathFor route='consultationList'}}"><i class="fa fa-stethoscope"></i> <span
+                                    class="nav-label">我的会诊</span> </a>
+                        </li>
+                        <li class="">
+                          <a href="{{pathFor route='chatSessionList'}}"><i class="fa fa-stethoscope"></i> <span
+                                  class="nav-label">我的咨询</span> </a>
+                        </li>
+
+                        <li class="dropdown">
+                            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-h-square"></i> 医生工作站 <span class="caret"></span></a>
+                            <ul role="menu" class="dropdown-menu">
+                                <li class="">
+                                    <a class="font-size-14" href="{{pathFor route='uscapturefromworklist'}}"><i class="fa fa-medkit"></i> <span
+                                            class="nav-label">超声采集</span> </a>
+                                </li>
+                                <li class="">
+                                    <a class="font-size-14" href="{{pathFor route='outMediaRecordList'}}"><i class="fa fa-folder-open"></i> <span
+                                            class="nav-label">门诊病例</span> </a>
+                                </li>
+                                <li class="">
+                                    <a class="font-size-14" href="{{pathFor route='modifyMedimgReportList'}}"><i class="fa fa-file-text"></i> <span
+                                            class="nav-label">修改报告</span> </a>
+                                </li>
+                                <li class="">
+                                    <a class="font-size-14" href="{{pathFor route='medimgReports'}}"><i class="fa fa-search"></i> <span
+                                            class="nav-label">报告查询</span> </a>
+                                </li>
+                                {{#if isInRole 'qc'}}
+                                    <li class="">
+                                        <a class="font-size-14" href="{{pathFor route='auditMedimgReportList'}}"><i class="fa fa-pencil-square"></i> <span
+                                                class="nav-label">审核报告</span> </a>
+                                    </li>
+                                {{/if}}
+                            </ul>
+                        </li>
+
+                        <li class="">
+                            <a href="{{pathFor route='videoedu'}}"><i class="fa fa-video-camera"></i> <span
+                                    class="nav-label">视频教育</span> </a>
+                        </li>
+                    {{/if}}
+                    {{#if isInRole 'nurse'}}
+                        <li class="">
+                            <a href="{{pathFor route='patients'}}"><i class="fa fa-users"></i> <span
+                                    class="nav-label">患者管理</span> </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{{pathFor route='worklists'}}"><i class="fa fa-file-text-o"></i> <span
+                                    class="nav-label">工作流列表</span> </a>
+                        </li>
+                        <li class="">
+                            <a href="{{pathFor route='charge'}}"><i class="fa fa-jpy"></i> <span
+                                    class="nav-label">处方收费</span> </a>
+                        </li>
+                        <li class="">
+                            <a href="{{pathFor route='printMedimgReportList'}}"><i class="fa fa-print"></i> <span
+                                    class="nav-label">打印报告</span> </a>
+                        </li>
+                        <li class="">
+                            <a href="{{pathFor route='medicineReceiving'}}"><i class="fa fa-eraser"></i> <span
+                                    class="nav-label">药房取药</span> </a>
+                        </li>
+                    {{/if}}
+                    {{#if isInRole 'nurse'}}
+                        <li class="">
+                            <a href="{{pathFor route='medimgReports'}}"><i class="fa fa-search"></i> <span
+                                    class="nav-label">报告查询</span> </a>
+                        </li>
+                    {{/if}}
+
+                    {{#if isInRole 'patient'}}
+                        <li class="">
+                            <a href=""><i class="fa fa-medkit"></i> <span
+                                    class="nav-label">健康档案</span> </a>
+                        </li>
+                        <li class="">
+                            <a href=""><i class="fa fa-user-md"></i> <span
+                                    class="nav-label">我的医生</span> </a>
+                        </li>
+                        <li class="">
+                            <a href=""><i class="fa fa-phone-square"></i> <span
+                                    class="nav-label">预约管理</span> </a>
+                        </li>
+                        <li class="">
+                            <a href="{{pathFor route='dicomList'}}"><i class="fa fa-file-text-o"></i> <span
+                                    class="nav-label">影像列表</span> </a>
+                        </li>
+                        <!--<li class="">
+                            <a href="{{pathFor route='consultationList'}}"><i class="fa fa-users"></i> <span
+                                    class="nav-label">在线咨询</span> </a>
+                        </li>-->
+                    {{/if}}
+                    {{#if isInRole 'admin'}}
+                        <li class="">
+                            <a href="{{pathFor route='hospitals'}}"><i class="fa fa-hospital-o"></i> <span
+                                    class="nav-label">医院管理</span> </a>
+                        </li>
+                    {{/if}}
+
+                </ul>
+                <ul class="nav navbar-top-links navbar-right">
+                    <li><a data-toggle="modal" href="#showQr"><i class="fa fa-qrcode" ></i>二维码</a></li>
+                    <li><a href="/myProfile">{{currentUser.profile.name}}</a></li>
+                    <li><a href="/logout"><i class="fa fa-sign-out"></i></a></li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="modal" id="showQr" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">{{qrTitle}}</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="{{showQr}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

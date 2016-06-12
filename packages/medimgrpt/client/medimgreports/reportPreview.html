@@ -1,0 +1,163 @@
+<template name="reportPreview">
+
+    <div class="row report_height">
+        <div class="col-sm-7 border-right reheight">
+            <!--startprint1-->
+            <div id="printDiv">
+            <table width="100%">
+                <tr>
+                    <td class="text-center font-size-30" style="color:#000;">
+                        <strong>{{hos}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center font-size-18">
+                        <span>
+                            <strong>检查报告单</strong>
+                        </span>
+                    </td>
+                </tr>
+            </table>
+            <hr>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="vertical-top">
+                <tr style="height:20px;">
+                    <td><strong>姓名:</strong>&nbsp;{{ selectedReport.pat }}&nbsp;</td>
+                    <td><strong>性别:</strong>&nbsp;{{ selectedReport.sex }}&nbsp;</td>
+                    <td><strong>年龄:</strong>&nbsp;{{ selectedReport.age }}&nbsp;</td>
+                    <td><strong>科别:</strong>&nbsp;{{ selectedReport.apldep }}&nbsp;</td>
+                </tr>
+                <tr style="height:20px;">
+                    <td><strong>检查医生:</strong>&nbsp;{{ selectedReport.doc }}&nbsp;</td>
+                    <td><strong>申请科室:</strong>&nbsp;{{ selectedReport.apldep }}&nbsp;</td>
+                    <td><strong>诊室:</strong>&nbsp;{{ selectedReport.room }}&nbsp;</td>
+                    <td><strong>申请医生:</strong>&nbsp;{{ selectedReport.apldoc }}&nbsp;</td>
+                </tr>
+                <tr style="height:20px;">
+                    <td><strong>初始诊断:</strong>&nbsp;{{ selectedReport.diag }}&nbsp;</td>
+                    <td><strong>模态:</strong>&nbsp;{{ selectedReport.mod }}&nbsp;</td>
+                    <td><strong>来源:</strong>&nbsp;{{ selectedReport.src }}&nbsp;</td>
+                    <td><strong>设备名称:</strong>&nbsp;{{ selectedReport.dev }}&nbsp;</td>
+                </tr>
+                <!--<tr style="height:20px;">-->
+                    <!--<td><strong>医院名称:</strong>&nbsp;{{ selectedReport.hos }}&nbsp;</td>-->
+                <!--</tr>-->
+            </table>
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="vertical-top">
+                <tr class="m-b-sm">
+                    <td style="height:20px;"><strong>检查项:</strong>&nbsp; {{#each selectedReport.exms }}
+                        {{pt}}:{{itm}};&nbsp;
+                    {{/each}}</td>
+                </tr>
+            </table>
+            <hr>
+            <div border="0" cellspacing="0" cellpadding="0" class="row m-b-sm">
+                <div class="col-xs-offset-1">
+                {{#each Imgs}}
+                    <div class="col-xs-5">
+                        <img alt="image"  src="{{url}}" class="img-responsive">
+                    </div>
+                {{/each}}
+                </div>
+            </div>
+            <hr>
+            <table class="m-b-sm">
+                <tr width="100%" class="m-b-sm">
+                    <p class="font-size-16"><strong>超声所见：</strong></p>
+                </tr>
+                <tr class="m-b-sm">
+                    <p id="Finding" class="word-break">&nbsp;&nbsp;&nbsp;&nbsp;{{selectedReport.find}}</p>
+                </tr>
+                <tr class="m-b-sm">
+                    <p class="font-size-16"><strong>超声所得：</strong></p>
+                </tr>
+                <tr class="m-b-sm">
+                    <p id="Hint">&nbsp;&nbsp;&nbsp;&nbsp;{{selectedReport.hint}}</p>
+                </tr>
+            </table>
+            <hr>
+            <table width="100%" class="m-b-lg vertical-top">
+                <tr>
+                    <td align="left" width="20%"><strong>录入员：</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td align="left" width="20%"><strong>检查医生：</strong>{{ selectedReport.doc }}</td>
+                    <td align="left" width="15%"><strong>技师：</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td align="left" width="20%"><strong>签名：</strong>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td align="left" width="45%"><strong>时间：</strong>{{ simpleDate selectedReport.st }}</td>
+                </tr>
+                <tr>
+                    <!--<td align="left" width="100%" colspan="4"><p>%5</p></td>-->
+                </tr>
+            </table>
+            </div>
+            <!--endprint1-->
+        </div>
+        <div class="col-sm-5">
+            {{#each selectedReport.vids}}
+                <!--<div class="file">-->
+                <!--<a href="#">-->
+                <!--<span class="corner"></span>-->
+                <!--<div class="image">-->
+                <!--<img alt="image"  src="{{img}}" class="img-responsive" />-->
+                <!--</div>-->
+                <!--</a>-->
+                <!--</div>-->
+                <video id="example_video_1" class="video-js vjs-default-skin"
+                       controls preload="auto" width="640" height="264"
+                       poster="{{img}}"
+                       data-setup='{"example_option":true}'>
+                    <source src="{{webm}}" type='video/webm' />
+                    <source src="{{mp4}}" type='video/mp4' />
+                    <!--<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>-->
+                </video>
+
+            {{/each}}
+            <div class="col-sm-12 m-t-sm">
+                <div class="row">
+                {{#each selectedReport.imgs}}
+                    <!--<div class="col-sm-3 p-xxs">-->
+                        <a class="fancybox" href="{{url}}" data-fancybox-group="gallery"><img src="{{url}}" alt="" /></a>
+                        <!--<a data-toggle="modal" href="#bigImgModal">-->
+                            <!--<img alt="image" class="img-responsive" src="{{url}}" />-->
+                        <!--</a>-->
+                    <!--</div>-->
+                {{/each}}
+                </div>
+            </div>
+        </div>
+        <!--日志-->
+        <!--<div class="col-sm-2 border-left rizhi_height">-->
+            <!--<div class="row">-->
+                <!--{{#each selectedReport.logs}}-->
+                    <!--<li class="list-group-item">-->
+                        <!--<p><a class="text-info" href="#">{{u}}</a>{{a}}了报告</p>-->
+                        <!--<small class="block text-muted"><i class="fa fa-clock-o"></i> {{completeDate t}}</small>-->
+                    <!--</li>-->
+                <!--{{/each}}-->
+            <!--</div>-->
+        <!--</div>-->
+
+
+
+    </div>
+    <!--</div>-->
+    <!--<div id="bigImgModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="bigImgDivLabel" aria-hidden="true" >-->
+        <!--<div class="modal-dialog modal-lg"  style="overflow:hidden">-->
+            <!--<div class="modal-content">-->
+                <!--<div class="modal-header text-center no-borders">-->
+                    <!--<span>&nbsp;&nbsp;</span>-->
+                    <!--<button type="button" class="close font-size-16" data-dismiss="modal" aria-label="关闭">-->
+                        <!--<i class="fa fa-times"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+
+                <div id="big-img-div" class="modal-body none" style="position: absolute;width:800px;height:600px; left:50%;top:50%;margin-left:-400px; margin-top:-300px; z-index:999;">
+                    <div class="modal-content" style="width:800px;">
+                        <button type="button" class="close font-size-16" id="imgPreviewCloseBtn">
+                            <i class="fa fa-times fa-2x"></i>
+                        </button>
+                        <div><img src="" style="width:800px;height:580px;"></div>
+                    </div>
+                </div>
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</template>

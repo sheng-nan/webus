@@ -1,0 +1,32 @@
+<template name="wlExms">
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>检查部位</th>
+            <th>检查项目</th>
+            <th>费用</th>
+            <th>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each wlExms}}
+            {{>wlExmItem}}
+        {{/each}}
+        <tr>
+            <td><select id="pat_exmpt" style="width:100%"><option value="">---请选择---</option>
+                {{#each exmptOptions_p}}
+                    <option value="{{value}}">{{label}}</option>
+                {{/each}}
+            </select></td>
+            <td><select id="pat_exmitm" style="width:100%"><option value="">---请选择---</option>
+                {{#each exmitmAddOptions_p}}
+                    <option value="{{value}}">{{label}}</option>
+                {{/each}}
+            </select></td>
+            <td><div id="itm_fee">{{itm_fee}}</div></td>
+            <td><a class="btn btn-primary btn-sm fa fa-plus fa-1x" data-toggle="modal">
+            </a></td>
+        </tr>
+        </tbody>
+    </table>
+</template>

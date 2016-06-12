@@ -1,0 +1,82 @@
+<template name="worklistAdd">
+   {{#autoForm  id="addWorkListForm"  collection="Laniakea.Collection.Worklists" }}
+        <fieldset>
+            {{> afQuickField name='patid' id='patid' type='hidden'}}
+            {{> afQuickField name='pat' id='pat' type='hidden'}}
+            <div class="m-b-sm">
+                <label class="col-sm-2">患者姓名</label>
+                <div class="col-sm-9">
+                    <div id="search"><input type="text" id="sel_input" placeholder="姓名/拼音简写" class="form-control position-relative"/></div>
+                    <div class="col-sm-12" id="pat_add">
+                        <ul class="search_list unstyled">
+                            {{#each patients}}
+                                <li selValue="{{_id}}">{{profile.name}}&nbsp;&nbsp;{{profile.sex}}&nbsp;&nbsp;{{getAge profile.birthday}}</li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                  </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+            {{> afQuickField name='sex' type='hidden' id='sex' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='age' type='hidden' id='age' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='apmt' id='apmt_dateTime' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='serv' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='dev' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" options=devOptions}}
+            {{> afQuickField name='apldepid' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" type='hidden' value=dep_id}}
+            {{> afQuickField name='apldocid' type='hidden' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" options=docOptions}}
+            {{> afQuickField name='docid' type='hidden' id='wl_docid'  template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            <div>
+                <label class="col-sm-2">检查医生</label>
+                <div class="col-sm-9">
+                    {{#each doctors}}
+                        {{>wlDoctorItem}}
+                    {{/each}}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <label class="col-sm-2">检查项</label>
+                <div class="col-sm-9">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>检查部位</th>
+                            <th>检查项目</th>
+                            <th>费用</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {{#each wlExms}}
+                            {{>wlExmItem}}
+                            {{/each}}
+                        <tr>
+                            <td><select id="exm_pt" style="width:100%"><option value="">---请选择---</option>
+                                {{#each exmptOptions}}
+                                    <option value="{{value}}">{{label}}</option>
+                                    {{/each}}
+                            </select></td>
+                            <td><select id="exm_itm" style="width:100%"><option value="">---请选择---</option>
+                                {{#each exmitmAddOptions}}
+                                    <option value="{{value}}">{{label}}</option>
+                                {{/each}}
+                            </select></td>
+                            <td><div id="itm_fee">{{itm_fee}}</div></td>
+                            <td><a class="btn btn-primary btn-sm fa fa-plus" data-toggle="modal">
+                            </a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--{{> afQuickField name='exms' id='exms_add' type='hidden' value=wlExms template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+            {{> afQuickField name='state' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" type='hidden' value=addState}}
+            {{> afQuickField name='desc'  template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+        </fieldset>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+        </div>
+    {{/autoForm}}
+</template>

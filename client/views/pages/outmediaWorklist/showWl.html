@@ -1,0 +1,54 @@
+<template name="showWl">
+    <div id="showOutmediaWlModal" class="modal fade"  tabindex="-1" role="dialog" aria-labelledby="showOutmediaWlModalLabel" aria-hidden="true" >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header text-center no-borders">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="reheight">
+                        <!--startprint1-->
+                        <div id="printDiv">
+                            <table width="100%">
+                                <tr>
+                                    <td class="text-center ">
+                                        <strong class="font-size-30 font-green">{{selectedWl.hos}}</strong>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="text-center font-size-18">
+                                        <strong>检查申请单</strong>
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="vertical-top">
+                                <tr style="line-height:30px;">
+                                    <td><strong class="font-size-14">姓名</strong>&nbsp;{{ selectedWl.pat }}&nbsp;</td>
+                                    <td><strong class="font-size-14">性别</strong>&nbsp;{{ selectedWl.sex }}&nbsp;</td>
+                                    <td><strong class="font-size-14">年龄</strong>&nbsp;{{ selectedWl.age }}&nbsp;</td>
+                                </tr>
+                                <tr style="line-height:30px;">
+                                    <td><strong class="font-size-14">检查科室</strong>&nbsp;{{ selectedWl.exmdep }}&nbsp;</td>
+                                    <td><strong class="font-size-14">检查项目</strong>&nbsp;{{ selectedWl.serv }}&nbsp;</td>
+                                    <td><strong class="font-size-14">设备</strong>&nbsp;{{ selectedWl.dev }}&nbsp;</td>
+
+                                </tr>
+                                <tr style="line-height:30px;">
+                                    <td><strong class="font-size-14">检查部位</strong>&nbsp;{{ selectedWl.exmpt }}&nbsp;</td>
+                                    <td><strong class="font-size-14">检查项目</strong>&nbsp;{{ selectedWl.exmitm }}&nbsp;</td>
+                                    <td><strong class="font-size-14">费用</strong>&nbsp;{{ selectedWl.fee }}&nbsp;</td>
+                                </tr>
+                                <tr style="line-height:30px;">
+                                    <td><strong class="font-size-14">时间</strong>&nbsp;{{simpleDate selectedWl.apmt }}&nbsp;</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

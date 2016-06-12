@@ -1,0 +1,32 @@
+<template name="usKnowledgeNodes">
+    <div class="ibox-content">
+        <form role="form" class="form-inline">
+            <div class="form-group">
+                <input type="text" placeholder="知识节点信息..." name="usKnowledgeNodes" id="usKnowledgeNodes" class="form-control"></div>
+        </form>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            {{#each usKnowledgeNodes}}
+                {{> usKnowledgeNodeItem }}
+            {{/each}}
+            <a class="btn btn-primary fa fa-plus fa-3x" data-toggle="modal" href="#addKnowledgeModal">
+            </a>
+        </div>
+    </div>
+    <div class="modal fade" id="addKnowledgeModal" tabindex="-1" role="dialog" aria-labelledby="addKnowledgeModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span></button>
+                    <h4 class="modal-title" id="addKnowledgeModalLabel">添加知识节点</h4>
+                </div>
+                <div class="modal-body">
+                  {{>addKnowledgeNode}}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

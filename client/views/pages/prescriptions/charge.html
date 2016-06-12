@@ -1,0 +1,45 @@
+<template name="charge">
+    <div class="ibox m-t">
+        <div class="ibox-title">
+            <span>待收费处方列表</span>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 pull-right">
+                <input type="text" name="presListQueryPara" placeholder="Search.." class="form-control">
+            </div>
+        </div>
+        <div class="ibox-content">
+            <table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                <thead>
+                <tr>
+
+                    <th>姓名</th>
+                    <th data-hide="phone">状态</th>
+                    <th data-hide="phone">创建时间</th>
+                    <th data-hide="phone">费用(元)</th>
+                    <th class="text-right">操作</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {{#each pres}}
+                    <tr>
+                        <td>
+                            {{pat}}
+                        </td>
+                        <td>{{state}}</td>
+                        <td>{{simpleDate createdAt}}</td>
+                        <td>￥{{fee}}</td>
+                        <td class="text-right">
+                            <div class="btn-group">
+                                <button class="showPre btn-white btn btn-xs">查看</button>
+                                <button class="chargePre btn-white btn btn-xs">收费</button>
+                            </div>
+                        </td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    {{>showPrescription}}
+</template>

@@ -1,0 +1,78 @@
+<template name="approvedReports">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title ibox-title-gray">
+            <span>影像报告</span>
+        </div>
+        <div class="ibox-content">
+            <div class="reminder-list">
+                <div class="p-v-xs">
+                    <table class="table table-hover no-margins">
+                        <thead><tr>
+                       <td class="col-sm-1">
+                            <strong>患者姓名</strong>
+                        </td>
+                        <td class="col-sm-1">
+                            <strong>年龄</strong>
+                        </td>
+                        <td class="col-sm-1">
+                            <strong>性别</strong>
+                        </td>
+                        <td class="col-sm-2">
+                            <strong>检查部位</strong>
+                        </td>
+                        <td class="col-sm-2">
+                            <strong>医院名称</strong>
+                        </td>
+                        <td class="col-sm-2">
+                            <strong>检查医生</strong>
+                        </td>
+                        <td class="col-sm-2">
+                            <strong>开始时间</strong>
+                        </td>
+                            <td class="col-sm-1">
+                                <strong>查看</strong>
+                            </td>
+                        </tr>
+                        <div class="clearfix"></div>
+                    </thead>
+                        <tbody>
+                        {{#each medimgReports}}
+                            <!--<a class="row" style="display:inline-block" width="100px;" data-toggle="modal" href="#showmedimgReportModal">-->
+                                <tr width="100%" class="reportModal">
+                                <td class="col-sm-1">
+                                    {{pat}}
+                                </td>
+                                <td class="col-sm-1">
+                                    {{age}}
+                                </td>
+                                <td class="col-sm-1">
+                                    {{sex}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{exmpt}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{hos}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{doc}}
+                                </td>
+                                <td class="col-sm-2">
+                                    {{completeDate st}}
+                                </td>
+                                 <td class="col-sm-1">
+                                     <a data-toggle="modal" href="#showmedimgReportModal"><strong>查看</strong></a>
+                                </td>
+                                    <div class="clearfix"></div>
+                                </tr>
+                            <!--</a>-->
+                        {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</template>

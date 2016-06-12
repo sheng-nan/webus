@@ -1,0 +1,219 @@
+<template name="addChartForm">
+    <!-- 体重Modal -->
+    <div class="chart">
+    <div class="modal fade" id="weightModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header font-size-24">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title" id="myModalLabel">添加体重</span>
+                </div>
+
+                <form id="addweightChartFrom">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                            <strong class="font-size-30 font-green">体重</strong>
+                        </label>
+                        <div class="col-sm-6 col-md-7">
+                            <input class="form-lg-input form-control m-b" type="number" name="weightValue" id="weightValue" placeholder="测量体重"   min="10" max="300" step="any">
+                        </div>
+                    </div>
+                      <!--<input type="date" name="weightTime" id="weightTime" placeholder="测量时间">-->
+                </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <div class="btn-center">
+                            <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                            <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 血压Modal -->
+    <div class="modal fade" id="chartbloodModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header font-size-24">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title" id="myModalLabel">添加血压</span>
+                </div>
+
+                <form id="addchartbloodForm">
+                    <div class="modal-body">
+                        <div class="center-block">
+                            <div class="form-group">
+                                <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                                    <strong class="font-size-30 font-green">高血压</strong>
+                                </label>
+                                <div class="col-sm-6 col-md-7">
+                                    <input class="form-lg-input form-control" type="number" name="highbloodValue" id="highbloodValue" placeholder="高血压"   min="0" max="200" step="any">
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="form-group m-t">
+                                <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                                    <strong class="font-size-30 font-purple">低血压</strong>
+                                </label>
+                                <div class="col-sm-6 col-md-7">
+                                    <input type="number" class="m-b form-lg-input form-control" name="lowbloodValue" id="lowbloodValue" placeholder="低血压"   min="0" max="200" step="any">
+                                </div>
+                            </div>
+                            <!--<input type="date" name="bloodTime" id="bloodTime" placeholder="时间">-->
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <div class="btn-center">
+                            <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                            <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 血糖Modal -->
+    <div class="modal fade" id="chartbgModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header font-size-24">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title" id="myModalLabel">添加血糖</span>
+                </div>
+
+                <form id="addchartbgForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                                <strong class="font-size-30 font-red">血糖</strong>
+                            </label>
+                            <div class="col-sm-6 col-md-7">
+                                <input class="form-lg-input form-control m-b" type="number" name="bgValue" id="bgValue" placeholder="血糖"   min="0" max="10" step="any">
+                            </div>
+                        </div>
+                        <!--<input type="date" name="bgTime" id="boTime" placeholder="时间">-->
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <div class="btn-center">
+                            <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                            <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+        <!-- 心率Modal -->
+        <div class="modal fade" id="chartheartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog  modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header font-size-24">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <span class="modal-title" id="myModalLabel">添加心率</span>
+                    </div>
+
+                    <form id="addchartheartForm">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                                    <strong class="font-size-30 font-red">心率</strong>
+                                </label>
+                                <div class="col-sm-6 col-md-7">
+                                    <input class="form-lg-input form-control m-b" type="number" name="heartValue" id="heartValue" placeholder="心率"   min="0" max="200" step="any">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="modal-footer">
+                            <div class="btn-center">
+                                <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                                <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    <!-- 血氧Modal -->
+    <div class="modal fade" id="chartboModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header  font-size-24">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title" id="myModalLabel">添加血氧</span>
+                </div>
+
+                <form id="addchartboForm">
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                                <strong class="font-size-30 font-blue">血氧</strong>
+                            </label>
+                            <div class="col-sm-6 col-md-7">
+                                <input class="form-lg-input form-control m-b" type="number" name="boValue" id="boValue" placeholder="血氧数据"   min="0" max="100" step="any">
+                            </div>
+                        </div>
+                        <!--<input type="date" name="boTime" id="boTime" placeholder="时间">-->
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="modal-footer">
+                        <div class="btn-center">
+                            <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                            <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- 运动Modal -->
+    <div class="modal fade" id="chartActivityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header  font-size-24">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <span class="modal-title" id="myModalLabel">添加运动</span>
+                </div>
+
+                <form id="addchartActivityForm">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="" class="col-sm-4 col-md-3 col-sm-offset-1 col-md-offset-1 control-label">
+                            <strong class="font-size-30 font-purple">运动</strong>
+                        </label>
+                        <div class="col-sm-6 col-md-7">
+                            <input class="form-lg-input form-control m-b" type="number" name="stepValue" id="stepValue" placeholder="运动数据"   min="0" step="any">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                        <!--<input type="date" name="stepTime" id="stepTime" placeholder="时间">-->
+
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-center">
+                        <button type="submit" class="btn btn-primary btn-lg pull-left">确定</button>
+                        <button type="button" class="btn btn-primary btn-lg pull-right" data-dismiss="modal">取消</button>
+
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</template>

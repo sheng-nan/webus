@@ -1,0 +1,20 @@
+<template name="doctorItm">
+
+    <a href="{{pathFor route='doctorIndex'}}">
+        <div class="col-sm-4 col-xs-6 col-xxs-6">
+            <div class="text-center">
+                <img alt="image" class="img-circle m-b-sm m-t-xs photo-width img-responsive" src="{{photo}}">
+                <button class="btn btn-primary btn-xs" id="followBtn">{{#if isFollowed}}取消关注{{else}}关注{{/if}}</button>
+            </div>
+        </div>
+        <div class="col-sm-8 col-xs-6 col-xxs-6">
+            <h2 class="no-margins">{{profile.name}}</h2>
+            <address class="m-t-sm">
+                <strong class="m-r-xs">职称</strong>{{profile.doctor.doct}}<br>
+                <strong class="m-r-xs">医院/科室</strong>{{profile.doctor.hos}} {{profile.doctor.dep}}<br>
+                <strong class="m-r-xs">擅长</strong>{{exp}}
+            </address>
+        </div>
+    </a>
+    <div class="clearfix"></div>
+</template>

@@ -1,0 +1,69 @@
+<template name="patientCard">
+    {{#if isws}}
+        <a href="#">
+            <div class="col-sm-5 col-xs-6 col-xxs-6">
+                <div class="text-center">
+                    <img alt="image"  src="{{photo}}" class="img-circle m-t-xs photo-width img-responsive">
+                </div>
+            </div>
+        </a>
+    {{else}}
+        {{#if isInRole 'doctor'}}
+        <a href="{{pathFor 'patientProfile' data=doc}}">
+            <div class="col-sm-5 col-xs-6 col-xxs-6">
+                <div class="text-center">
+                    <img alt="image"  src="{{photo}}" class="img-circle m-t-xs photo-width img-responsive">
+                </div>
+            </div>
+        </a>
+        {{else}}
+            <div class="col-sm-5 col-xs-6 col-xxs-6">
+                <div class="text-center">
+                    <img alt="image"  src="{{photo}}" class="img-circle m-t-xs photo-width img-responsive">
+                </div>
+            </div>
+        {{/if}}
+    {{/if}}
+
+    <div class="col-sm-7 col-xs-6 col-xxs-6 no-padding">
+        <div class="row">
+
+            <div class="col-sm-12">
+                <div class="pull-right">
+                    <!-- {{#if isactivepath regex='profile'}}
+                        <a data-toggle="modal" href="#addpatientmodal"><i class="fa fa-edit fa-x inline-block m-r-n font-color-lighter-gray"></i></a>
+                    {{/if}}-->
+                </div>
+                <h2 class="no-margins user-name-h2">
+                    <a title="{{doc.profile.name}}">{{profileName}}</a>
+                </h2>
+            </div>
+
+            <div class="col-sm-12 m-t-sm">
+                <p class="line1">
+                    <span class="m-r-sm">出生日期</span>{{simpleDate doc.profile.birthday}}<br>
+                    <span class="m-r-sm">性别</span>{{doc.profile.sex}}<br>
+                    <span class="m-r-sm">电话</span>{{doc.profile.mobile}}<br>
+                </p>
+                <div>
+                    <button class="btn btn-primary btn-xs" title="编辑" data-toggle="modal" href="#updatePatientModal"><i class="fa fa-pencil"></i></button>
+                    {{#if isInRole 'doctor'}}
+                        <button class="btn btn-primary btn-xs" title="删除" data-toggle="modal"  href="#confirmDeleteModal"><i class="fa fa-trash-o "></i></button>
+                        <button class="btn btn-primary btn-xs" title="超声检查" id="startUsReport"><i class="fa fa-file-text-o"></i></button>
+                        <button class="btn btn-primary btn-xs" title="新建门诊病例" id="startOutMediaRecord"><i class="fa fa-file-text"></i></button>
+                        <button class="btn btn-primary btn-xs" title="聊天" id="startChatSession"><i class="fa fa-bell"></i></button>
+                    {{/if}}
+                    {{#if isInRole 'nurse'}}
+                        <button class="btn btn-primary btn-xs" title="添加工作流" data-toggle="modal" href="#addPatientWorkListModal">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    {{/if}}
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div class="clearfix"></div>
+</template>

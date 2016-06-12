@@ -1,0 +1,26 @@
+<template name="medimgReportLogForm">
+    {{#if isSelected}}
+    <div class="ibox-content gray-bg">
+        {{#autoForm schema=reportLogSchema id="logForm" type="insert" resetOnSuccess="true" preserveForm='false' }}
+            {{>afFieldInput name="uid" value=curruserid style="display:none"}}
+            {{>afFieldInput name="u" value=currusername style="display:none"}}
+            {{>afFieldInput name="a" id='log_action' style="display:none"}}
+            {{> afQuickField name='c' placeholder="input some logs..." rows="5" label=false }}
+        {{/autoForm}}
+        <div class="pull-right">
+        {{#if equals tag 'audit'}}
+            <button class="btn btn-primary" id="backToBut">打回</button>
+            <button class="btn btn-primary" id="auditBut">审核通过</button>
+        {{/if}}
+        {{#if equals tag 'modify'}}
+            <button class="btn btn-primary" id="saveBut">保存</button>
+        {{/if}}
+        {{#if equals tag 'print'}}
+            <a id="medimgReportPrint" class="btn btn-primary btn-lg"><i class="fa fa-print"></i> 打印</a>
+        {{/if}}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    {{/if}}
+
+</template>

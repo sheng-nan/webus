@@ -1,0 +1,61 @@
+<template name="auditMedimgReportList">
+    <div class="fh-breadcrumb">
+        <!--报告列表-->
+        <div class="fh-column">
+            <div class="full-height-scroll">
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if reportCount}}
+                    {{#each medimgReports}}
+                        <li class="list-group-item" id="{{_id}}">
+                            <a data-toggle="tab" href="#tab-1">
+                                {{> operationMedimgReportItem }}
+                            </a>
+                        </li>
+                    {{/each}}
+                    {{else}}
+                        <h3>没有符合条件的报告！</h3>
+                    {{/if}}
+                </ul>
+
+            </div>
+        </div>
+        <!--报告列表 end-->
+        <!--&lt;!&ndash;日志&ndash;&gt;-->
+        <!--<div class="fh-column pull-right" style="width:160px;">-->
+            <!--<div class="full-height-scroll">-->
+                <!--{{>medimgReportLogList}}-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--日志 end-->
+        <!--报告内容-->
+        <div class="full-height">
+            <div class="full-height-scroll white-bg border-left-right">
+
+                <div class="element-detail-box">
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            {{>reportPreview}}
+                        </div>
+                    </div>
+                </div>
+    {{#if reportCount}}
+                {{>medimgReportLogForm tag='audit'}}
+    {{/if}}
+            </div>
+        </div>
+        <!--报告内容 end-->
+
+    </div>
+
+
+
+
+
+        <!--<div class="row">-->
+            <!--<div class="col-lg-9">-->
+                <!--{{>reportPreview}}-->
+                <!--{{>auditMedimgReport}}-->
+            <!--</div>-->
+        <!--</div>-->
+
+</template>

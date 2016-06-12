@@ -1,0 +1,58 @@
+<!--完善个人信息-->
+<template name="register2">
+    <div class="loginColumns text-center animated fadeInDown registerBox">
+        <div class="col-sm-9 col-sm-offset-3">
+            <img src="/img/logoBig.png"/>
+            <h2 class="m-b" style="margin-top:15px;margin-bottom:20px;color:#424242"><strong>完善个人信息</strong></h2>
+        </div>
+    {{#autoForm collection="Meteor.users" id="updateDoctorForm" class="lineheight-34"}}
+
+                {{>afQuickField name="profile.name" template="bootstrap3-horizontal" label-class="noweight col-sm-3 control-label font-size-16 text-right" input-col-class="col-sm-9" placeholder="必填"}}
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label font-size-16" style="font-weight:normal">真实姓名</label>-->
+                <!--<div class="col-sm-9"><input type="text" class="form-control"></div>-->
+            <!--</div>-->
+
+                {{>afQuickField name="profile.sex" template="bootstrap3-horizontal" label-class="noweight col-sm-3 control-label font-size-16 text-right" input-col-class="col-sm-9"}}
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label font-size-16" style="font-weight:normal">性别</label>-->
+                <!--<div class="col-sm-3"><input type="radio" style="margin-top:10px;margin-right:10px !important;" name="sex" checked="checked">男</div>-->
+                <!--<div class="col-sm-5"><input type="radio" style="margin-top:10px;margin-right:10px !important;" name="sex">女</div>-->
+            <!--</div>-->
+
+                {{>afQuickField name="profile.birthday" template="bootstrap3-horizontal" label-class="noweight col-sm-3 control-label font-size-16 text-right" input-col-class="col-sm-9"}}
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label font-size-16" style="font-weight:normal">出生日期</label>-->
+                <!--<div class="col-sm-9"><input type="text" class="form-control"></div>-->
+            <!--</div>-->
+            <div class="form-group clearfix">
+                <label class="noweight col-sm-3 control-label font-size-16 text-right">个人照片</label>
+                <div class="col-sm-3">
+                    <div style="width:95px;min-height:133px;border:1px solid #e5e6e7;background:#fff;">
+                        <img src="/img/userPhoto.jpg" class="img-block"/>
+                    </div>
+                </div>
+                <div class="col-sm-5" style="position:relative;height:133px;">
+                    <a href="javascript:;" class="fileBtn" style="position:absolute;bottom:0;left:0;">选择照片
+                        <input type="file" name="" id="">
+                    </a>
+                </div>
+            </div>
+
+                {{>afQuickField name="profile.doctor.exp" template="bootstrap3-horizontal" label-class="noweight col-sm-3 control-label font-size-16 text-right" input-col-class="col-sm-9"}}
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label font-size-16" style="font-weight:normal">擅长</label>-->
+                <!--<div class="col-sm-9"><input type="text" class="form-control"></div>-->
+            <!--</div>-->
+
+                {{>afQuickField name="profile.doctor.desc" type='textarea' template="bootstrap3-horizontal" rows="5" label-class="noweight col-sm-3 control-label font-size-16 text-right" input-col-class="col-sm-9"}}
+            <!--<div class="form-group">-->
+                <!--<label class="col-sm-3 control-label font-size-16" style="font-weight:normal">个人介绍</label>-->
+                <!--<div class="col-sm-9"><textarea  class="form-control" rows="5"></textarea></div>-->
+            <!--</div>-->
+            <div class="form-group"><label class="col-sm-3 control-label font-size-16" ></label>
+                <div class="col-sm-9"><button class="m-b-lg btn btn-primary btn-block font-size-16">下一步</button></div>
+            </div>
+    {{/autoForm}}
+    </div>
+</template>

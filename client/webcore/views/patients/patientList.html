@@ -1,0 +1,57 @@
+<template name="patientList">
+    <div class="animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-5 col-xs-12  m-t">
+                <input type="text" name="patientListQueryPara" placeholder="姓名或拼音缩写" class="form-control">
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-7 col-xs-12  m-t">
+                <div class="row">
+                    <a id="addPatientDiv" class="text-center font-weight-lighter col-lg-5 col-md-7 col-xs-5"
+                       data-toggle="modal" href="#addPatientModal">
+                        <div class="navy-bg add_user_btn">
+                            <i class="fa fa-plus fa-2x m-t-xs"></i>
+                        </div>
+                    </a>
+                    <div class="col-lg-7 col-xs-7 col-md-5">
+                        <div class="btn-group pull-right">
+                            <button class="btn btn-primary active Prm" type="button">主治患者</button>
+                            <button class="btn btn-white showPrm" type="button">非主治患者</button>
+                        </div>
+                    </div>
+                </div>
+                <!--<input type="checkbox" name="showPrm"> 显示非主治患者-->
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+
+        <div class="row dark-gray m-t">
+            <div class="m-t">
+            {{#each prmPatientList}}
+
+                    <div class="col-max-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 word-break">
+                        <div class="contact-box max-height">
+                            {{> patientCard doc=this ws=isWS}}
+                        </div>
+                    </div>
+
+            {{/each}}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        {{#if showNotPrm}}
+        <div class="row m-t">
+            {{#each patientList}}
+                <div class="col-max-2 col-lg-3 col-md-4 col-sm-6 col-xs-6 word-break">
+                    <div class="contact-box">
+                        {{> patientCard doc=this ws=isWS}}
+                    </div>
+                </div>
+            {{/each}}
+        </div>
+        {{/if}}
+    </div>
+    {{>patientAdd}}
+    {{>patientEdit}}
+    {{>patientDelete}}
+</template>

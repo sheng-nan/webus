@@ -1,0 +1,9 @@
+[submodule "packages/pinyin"]
+	path = packages/pinyin
+	url = git@git.viicare.com:atmosphere/pinyin.git
+[submodule "lib/schema"]
+	path = lib/schema
+	url = git@git.viicare.com:laniakea/schema.git
+[submodule "client/webcore"]
+	path = client/webcore
+	url = git@git.viicare.com:laniakea/webcore.git

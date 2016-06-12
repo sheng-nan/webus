@@ -1,0 +1,85 @@
+<template name="dicomStudies">
+
+        <div>
+            <div class="imgList">
+                <ul id="listUl">
+                    {{#each seriesList}}
+                        <li class="m-b-xs">
+                            <a class="dicomSeries" href="javascript:void(0)"><img src={{getFirstInstanceUrl}} width="90" height="90"></a>
+                        </li>
+                    {{/each}}
+                </ul>
+                <br/>
+            </div>
+            <div id="imgBox">
+
+                <div class="row">
+
+                    <div class="imgBar">
+                        <img src="/img/dicomicon/dicomWindowBrain.png" id="danao" width="40" height="40" style="cursor: pointer;" title="大脑">
+                        <img src="/img/dicomicon/dicomWindowAbdomen.png" id="fuqiang" width="40" height="40" style="cursor: pointer;" title="腹腔">
+                        <img src="/img/dicomicon/dicomWindowAir.png" id="zongge" width="40" height="40" style="cursor: pointer;" title="纵隔">
+                        <img src="/img/dicomicon/dicomWindowBone.png" id="gutou" width="40" height="40" style="cursor: pointer;" title="骨头">
+                        <img src="/img/dicomicon/dicomWindowLung.png" id="feibu" width="40" height="40" style="cursor: pointer;" title="肺部">
+
+                        <div class="btn-group" role="group" aria-label="...">
+                            <!-- WW/WL -->
+                            <button type="button" id="enableWindowLevelTool" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="渲染" title="WW/WC"><span class="fa fa-sun-o"></span></button>
+                            <!-- Invert -->
+                            <button type="button" id="invert" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="反转"><span class="fa fa-adjust"></span></button>
+                            <!-- Zoom -->
+                            <button type="button" id="zoom" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="缩放"><span class="fa fa-search"></span></button>
+                            <!-- Pan -->
+                            <button type="button" id="pan" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="平移"><span class="fa fa-arrows"></span></button>
+                            <!-- Stack scroll -->
+                            <!--<button type="button" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Stack Scroll"><span class="fa fa-bars"></span></button>-->
+                            <!-- Length measurement -->
+                            <button type="button" id="enableLength" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="测量"><span class="fa fa-arrows-v"></span></button>
+                            <!-- Angle measurement -->
+                            <button type="button" id="angle" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Angle Measurement"><span class="fa fa-angle-left"></span></button>
+                            <!-- Pixel probe -->
+                            <button type="button" id="probe" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Pixel Probe"><span class="fa fa-dot-circle-o"></span></button>
+                            <!-- Elliptical ROI -->
+                            <button type="button" id="circleroi" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Elliptical ROI"><span class="fa fa-circle-o"></span></button>
+                            <!-- Rectangle ROI -->
+                            <button type="button" id="rectangleroi" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Rectangle ROI"><span class="fa fa-square-o"></span></button>
+                            <button  type="button" id="highlight" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title="Highlight"><i class="fa fa-bar-chart"></i></button>
+                            <!-- Freeform ROI -->
+                            <button type="button"  id="freehand" class="btn btn-sm btn-default" data-container='body' data-toggle="tooltip" data-placement="bottom" title=">FreeformROI"><i class="fa fa-caret-up"></i></button>
+
+
+                        </div>
+                        <br/>
+                    </div>
+                    <div class="imgCon">
+                        <div style="position:relative;display:inline-block;color:white;"
+                             id="dicomBox"
+                             oncontextmenu="return false"
+                             class='cornerstone-enabled-image'
+                             unselectable='on'
+                             onselectstart='return false;'
+                             onmousedown='return false;'>
+                            <div id="dicomImage"
+                                 style="top:0px;left:0px; position:absolute;">
+                            </div>
+                            <div id="mrtopleft" style="position: absolute;top:3px; left:3px">
+                                Patient Name
+                            </div>
+                            <div id="mrtopright" style="position: absolute;top:3px; right:3px">
+                                Hospital
+                            </div>
+                            <div id="mrbottomright" style="position: absolute;bottom:3px; right:3px">
+                                Zoom:
+                            </div>
+                            <div id="mrbottomleft" style="position: absolute;bottom:3px; left:3px">
+                                WW/WC:
+                            </div>
+                            <div id="Imagebottomleft" style="position: absolute;bottom:15px; left:3px">
+                                Images:
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>

@@ -1,0 +1,110 @@
+<template name="consultationEnd">
+    <div class="row report_height">
+        <div class="col-sm-7 border-right reheight">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <span>会诊结果</span>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal">
+                        <div class="form-group"><label class="col-lg-2 control-label">申请人</label>
+
+                            <div class="col-lg-10"><input type="input" class="form-control"
+                                                          value="{{currentConsultation.prmdoc}}" readonly>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">会诊目的</label>
+
+                            <div class="col-lg-10"><input type="input" name="conpur" placeholder="会诊目的"
+                                                          value={{currentConsultation.docreq.conpur}} readonly
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">初步诊断</label>
+
+                            <div class="col-lg-10"><input type="input" name="initdiag" placeholder="初步诊断"
+                                                          value={{currentConsultation.docreq.initdiag}} readonly
+                                                          class="form-control"></div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">会诊模式</label>
+
+                            <div class="radio radio-info radio-inline">
+                                <input type="radio" value="分时" name="conmod" checked="">
+                                <label for="inlineRadio1"> {{currentConsultation.docreq.conmod}} </label>
+                            </div>
+                        </div>
+                        <div class="form-group"><label class="col-lg-2 control-label">邀请专家</label>
+
+                            <div class="col-lg-10">
+                                {{#each currentConsultation.condocs}}
+                                    <div class="col-sm-3">
+                                        <div class="text-center">
+                                            {{name}}{{#if status}}已经接受邀请{{else}}等待接受邀请{{/if}} &nbsp;
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+
+                        <div class="form-group"><label class="col-lg-2 control-label">患者申请</label>
+
+                            <div class="col-lg-10">
+                                <p>
+                                    <span class="m-r-xs">{{currentConsultation.pat}}</span>
+                                    <span class="m-r-xs">申请时间:{{completeDate currentConsultation.patreq.st}}</span>
+                                    <span class="m-r-xs">自述:{{currentConsultation.patreq.condition}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">会诊时间</label>
+
+                            <div class="col-lg-10"><span class="m-r-xs">{{completeDate currentConsultation.st}}
+                                ~{{completeDate currentConsultation.et}}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">会诊结果</label>
+
+                            <div class="col-lg-10"><input type="input"
+                                                          value={{currentConsultation.conresult}} readonly
+                                                          class="form-control"></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-5">
+            <div class="chat-mes">
+
+                {{#each currentConsultation.session}}
+                    <div class="mes">
+                        <div class="mesPhoto">
+                            <img src="{{doctorPhoto from}}" alt="photo">
+                        </div>
+                        <div class="mesBox">
+                            <div><strong>{{doctorName from}}</strong> <span class="mes-date"> {{completeDate st}} </span></div>
+                            <div>
+                                {{#if sessionType 'text'}}
+                                    {{content}}
+                                {{/if}}
+                                {{#if sessionType 'video'}}
+                                    <video class="video-js vjs-default-skin"
+                                           controls preload="auto" width="640" height="264"
+                                           data-setup=''>
+                                        <source src="{{content}}" type='video/webm'/>
+                                    </video>
+                                {{/if}}
+                                {{#if sessionType 'image'}}
+                                    <a class="fancybox" href="{{content}}" data-fancybox-group="gallery">
+                                        <img alt="图片" src="{{content}}" class="img-responsive"/>
+                                    </a>
+                                {{/if}}
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</template>

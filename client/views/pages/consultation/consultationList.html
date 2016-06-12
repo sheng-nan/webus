@@ -1,0 +1,139 @@
+<template name="consultationList">
+    <div class="fh-breadcrumb">
+        <!--报告列表-->
+        <div class="fh-column">
+            <div class="full-height-scroll">
+                <div class="font-YH">
+                    <a class="btn btn-success btn-xs m-b-sm m-t-sm" href="#patRequisitionModal" data-toggle="modal" title="医生申请会诊">医生申请会诊</a>
+                </div>
+                <h4 class="ibox-heading p-xs border-bottom border-top no-margins">会诊申请</h4>
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if consListExist '患者申请'}}
+                        {{#each consList '患者申请'}}
+                            <li class="list-group-item" id="{{_id}}">
+                                <a data-toggle="tab" href="#tab-1">
+                                    <small class="pull-right text-muted"> {{completeDate patreq.st}}</small>
+                                    <strong>{{pat}}</strong>
+                                    <div class="small m-t-xs">
+                                        <p>
+                                            <span class="m-r-xs">患者自述::{{patreq.condition}}</span>
+                                            <!--<span class="label pull-right label-primary">{{constatus}}</span>-->
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        {{/each}}
+                    {{else}}
+                        <p class="text-center m-t">没有符合条件的会诊</p>
+                    {{/if}}
+                </ul>
+
+                <h4 class="ibox-heading p-xs border-bottom border-top no-margins">待会诊</h4>
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if consListExist '待会诊'}}
+                        {{#each consList '待会诊'}}
+                            <li class="list-group-item" id="{{_id}}">
+                                <a data-toggle="tab" href="#tab-1">
+                                    <strong>申请人&nbsp;{{prmdoc}}</strong>
+                                    <div class="report_status_box2">
+                                        {{#if isPrmdoc this}}
+                                            <div class="report_status report_status_orange">主诊</div>
+                                        {{else}}
+                                            <div class="report_status report_status_green">被邀请</div>
+                                        {{/if}}
+                                    </div>
+                                    <div class="small m-t-xs">
+                                        <p>
+                                            <small class="text-muted"> {{completeDate docreq.st}}</small>
+                                            <br/>
+                                            <span class="m-r-xs">会诊目的:{{docreq.conpur}}</span>
+                                            <br/>
+                                            <span class="m-r-xs">初步诊断:{{docreq.initdiag}}</span>
+                                            <br />
+                                            <span class="label pull-right label-primary">{{constatus}}</span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        {{/each}}
+                    {{else}}
+                        <p class="text-center m-t">没有符合条件的会诊</p>
+                    {{/if}}
+                </ul>
+                <h4 class="ibox-heading p-xs border-bottom border-top no-margins">会诊中</h4>
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if consListExist '会诊中'}}
+                        {{#each consList '会诊中'}}
+                            <li class="list-group-item" id="{{_id}}">
+                                <a data-toggle="tab" href="#tab-1">
+                                    <small class="pull-right text-muted"> {{completeDate patreq.st}}</small>
+                                    <strong>{{pat}}</strong>
+                                    <div class="small m-t-xs">
+                                        <p>
+                                            <span class="m-r-xs">患者自述::{{patreq.condition}}</span>
+                                            <!--<span class="label pull-right label-primary">{{constatus}}</span>-->
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        {{/each}}
+                    {{else}}
+                        <p class="text-center m-t">没有符合条件的会诊</p>
+                    {{/if}}
+                </ul>
+                <h4 class="ibox-heading p-xs border-bottom border-top no-margins">会诊结束</h4>
+                <ul class="list-group elements-list" id="operReportItem">
+                    {{#if consListExist '会诊结束'}}
+                        {{#each consList '会诊结束'}}
+                            <li class="list-group-item" id="{{_id}}">
+                                <a data-toggle="tab" href="#tab-1">
+                                    <small class="pull-right text-muted"> {{completeDate patreq.st}}</small>
+                                    <strong>{{pat}}</strong>
+                                    <div class="small m-t-xs">
+                                        <p class="m-t-xs">
+                                            <span class="m-r-xs">患者自述::{{patreq.condition}}</span>
+                                            <!--<span class="label pull-right label-primary">{{constatus}}</span>-->
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        {{/each}}
+                    {{else}}
+                        <p class="text-center m-t">没有符合条件的会诊</p>
+                    {{/if}}
+                </ul>
+            </div>
+        </div>
+
+        <div class="full-height">
+            <div class="full-height-scroll white-bg border-left-right">
+                <div class="element-detail-box">
+                    <div class="tab-content">
+                        <div class="tab-pane active">
+                            <div class="row">
+                            {{#if conStatus '患者申请'}}
+                                {{>docRequisition _id=selectedConsultation._id}}
+                            {{/if}}
+                            {{#if conStatus '待会诊'}}
+                                {{#if isPrmdoc selectedConsultation}}
+                                    {{>consultationWait  _id=selectedConsultation._id}}
+                                {{else}}
+                                    {{>consultationInvite  _id=selectedConsultation._id}}
+                                {{/if}}
+                            {{/if}}
+                            {{#if conStatus '会诊中'}}
+                                {{>consultationSession  _id=selectedConsultation._id}}
+                            {{/if}}
+                            {{#if conStatus '会诊结束'}}
+                                {{>consultationEnd  _id=selectedConsultation._id}}
+                            {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{{>patRequisition}}
+</template>

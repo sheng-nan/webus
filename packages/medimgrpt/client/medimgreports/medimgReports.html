@@ -1,0 +1,62 @@
+<template name="medimgReports">
+    <div class="animated fadeInRight">
+        <form role="form" class="form-inline m-t">
+            <div class="form-group">
+                <input name="usReportsQueryPara" id="usReportsQueryPara" class="form-control" placeholder="Search...">
+            </div>
+            <div id="reportrange" class="form-control">
+                <i class="fa fa-calendar"></i>
+                <span id="time_rang"></span> <input type="hidden" name="start" id="start"><input type="hidden" name="end" id="end" ><b class="caret"></b>
+            </div>
+    {{#if isInRole 'doctor'}}
+            <div data-toggle="buttons" class="btn-group">
+                <label class="btn  btn-white active"> <input type="radio" id="option1" name="state" value=""> 全部状态 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option2" name="state" value="已新建"> 已新建 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option3" name="state" value="编辑中"> 编辑中 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option4" name="state" value="已保存"> 已保存 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option5" name="state" value="已审核"> 已审核 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option6" name="state" value="已打回"> 已打回 </label>
+                <label class="btn  btn-white "> <input type="radio" id="option7" name="state" value="已打印"> 已打印 </label>
+            </div>
+    {{/if}}
+        </form>
+        <div class="row report_list m-t">
+            {{#if ws}}
+                {{#each medimgReports}}
+                    <div class="col-xs-12">
+                        <div class="pull-right" style="margin-right: 3px;">
+                        </div>
+                        <div class="contact-box r-height">
+
+                            <a id="showmedimgReportModalDiv1"
+                               class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal"
+                               href="#">
+                                {{> medimgReportItem }}
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+            {{else}}
+                {{#each medimgReports}}
+                    <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                        <div class="pull-right" style="margin-right: 3px;">
+                            <!--<a href="{{pathFor route='reportPreview'}}" target="_blank" title="打印" ><i class="fa fa-print"></i></a>-->
+                        </div>
+                        <div class="contact-box r-height">
+                            <!--<a href="{{pathFor route='medimgReportDetail'}}">-->
+                            <a id="showmedimgReportModalDiv"
+                               class="text-center font-color-white font-weight-lighter add_user_btn" data-toggle="modal"
+                               href="#showmedimgReportModal">
+                                {{> medimgReportItem }}
+                            </a>
+                        </div>
+                    </div>
+                {{/each}}
+
+            {{/if}}
+
+        </div>
+
+   </div>
+    {{>medimgReportDetail}}
+</template>

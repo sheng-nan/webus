@@ -1,0 +1,91 @@
+<template name="worklists">
+    {{>worklistHead}}
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>申请列表</h3>
+                        <!-- <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
+
+                        <ul class="sortable-list connectList agile-list">
+                            {{#each worklists_apl}}
+                                {{> worklistItem }}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>患者预约</h3>
+                       <!-- <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
+
+                        <ul class="sortable-list connectList agile-list">
+                            {{#each worklists_yy}}
+                                {{> worklistItem }}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>预约确认</h3>
+                      <!--  <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
+                        <ul class="sortable-list connectList agile-list">
+                            {{#each worklists_qr}}
+                                {{> worklistItem }}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+          <!--  <div class="col-lg-3">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>检查中</h3>
+                        &lt;!&ndash;<p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>&ndash;&gt;
+                        <ul class="sortable-list connectList agile-list">
+                            {{#each worklists_jc}}
+                                {{> worklistItem }}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>-->
+            <div class="col-lg-3">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        <h3>已完成</h3>
+                       <!-- <p class="small"><i class="fa fa-hand-o-up"></i> Drag task between list</p>-->
+                        <ul class="sortable-list connectList agile-list">
+                            {{#each worklists_wc}}
+                                {{> worklistItem }}
+                            {{/each}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="addWorkListModal" tabindex="-1" role="dialog" aria-labelledby="addWorkListModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭"><span
+                            aria-hidden="false">&times;</span></button>
+                    <h4 class="modal-title" id="addWorkListModalLabel">添加工作流</h4>
+                </div>
+                <div class="modal-body">
+                    {{>worklistAdd}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>worklistEdit}}
+    {{> autoformModals}}
+</template>

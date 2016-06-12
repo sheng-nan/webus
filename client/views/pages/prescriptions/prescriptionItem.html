@@ -1,0 +1,8 @@
+<template name="prescriptionItem">
+    <li class="list-group-item">
+        <input type="hidden" value="{{_id}}" name="pre_pat_name">
+        <small class="pull-right text-muted">&nbsp; {{fee}}￥ &nbsp;  {{state}} </small>
+        <small class="pull-right text-muted"> {{sex}} &nbsp;{{#if age}} {{age}}岁 {{/if}} &nbsp; {{feetype}}&nbsp; </small>
+        <strong>{{pat}}</strong>
+    </li>
+</template>

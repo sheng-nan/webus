@@ -1,0 +1,120 @@
+<template name="messageItem">
+  {{#if sessionType 'text'}}
+    {{content}}
+  {{/if}}
+  {{#if sessionType 'video'}}
+    <video class="video-js vjs-default-skin"
+           controls preload="auto" width="640" height="264"
+           data-setup=''>
+      <source src="{{content}}" type='video/webm'/>
+    </video>
+  {{/if}}
+  {{#if sessionType 'image'}}
+    <a class="fancybox" href="{{content}}" data-fancybox-group="gallery">
+      <img alt="图片" src="{{content}}" class="img-responsive"/>
+    </a>
+  {{/if}}
+</template>
+<template name="chatSessionList">
+  <div class="fh-breadcrumb">
+    <!--报告列表-->
+    <div class="fh-column">
+      <div class="full-height-scroll">
+        <h4 class="ibox-heading p-xs border-bottom border-top no-margins">咨询列表</h4>
+        <ul class="list-group elements-list" id="operReportItem">
+          {{#if chatSessionListExist}}
+            {{#each chatSessions}}
+              <li class="list-group-item" id="{{_id}}">
+                <a data-toggle="tab" href="#tab-1">
+                  <small class="pull-right text-muted"> {{completeDate updatedAt}}</small>
+                  <strong>{{userInfo patid 'name'}}</strong>
+                  <div class="small m-t-xs">
+                      {{>messageItem lastMessage}}
+                  </div>
+                </a>
+              </li>
+            {{/each}}
+          {{else}}
+            <p class="text-center m-t">没有符合条件的会诊</p>
+          {{/if}}
+        </ul>
+      </div>
+    </div>
+
+    <div class="full-height">
+      <div class="full-height-scroll white-bg border-left-right">
+        <div class="element-detail-box">
+          <div class="tab-content">
+            <div class="tab-pane active">
+              <div class="row">
+                <div class="white-bg leftBox">
+                  <div class="font-YH">
+                    <a class="btn btn-success btn-xs m-t-sm" title="发送图片" id="uploadImage">上传图片</a>
+                    <input type="file" id="inputImage" class="hidden js-file" accept="image/*">
+                    <input type="hidden" class="js-value" data-schema-key="img_url">
+                  </div>
+                  <hr>
+                  <div class="chat-mes">
+                    {{#each messages}}
+                      <div class="mes">
+                        <div class="mesPhoto">
+                          <img src="{{userInfo from 'photo'}}" alt="loading">
+                        </div>
+                        <div class="mesBox">
+                          <div><strong>{{userInfo from 'name'}}</strong> <span class="mes-date"> {{completeDate st}} </span></div>
+                          <div>
+                            {{#if sessionType 'text'}}
+                              {{content}}
+                            {{/if}}
+                            {{#if sessionType 'video'}}
+                              <video class="video-js vjs-default-skin"
+                                     controls preload="auto" width="640" height="264"
+                                     data-setup=''>
+                                <source src="{{content}}" type='video/webm'/>
+                              </video>
+                            {{/if}}
+                            {{#if sessionType 'image'}}
+                              <a class="fancybox" href="{{content}}" data-fancybox-group="gallery">
+                                <img alt="图片" src="{{content}}" class="img-responsive"/>
+                              </a>
+
+                            {{/if}}
+                            {{#if sessionType 'audio'}}
+                                <audio controls>
+                                    <source src={{content}} type="audio/mp3">
+                                </audio>
+                            {{/if}}
+
+                          </div>
+                        </div>
+                        <div class="clearfix"></div>
+                      </div>
+                    {{/each}}
+                  </div>
+                  <div class="clearfix"></div>
+                  <form id="sessionForm">
+                    <div class="chat-message-form">
+                      <div class="mesInput">
+                        <a class="mesLeft"><i class="fa fa-plus"></i></a>
+                        <input type="text" class="mesRight" name="content"
+                               placeholder="输入消息">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="rightBox gray-bg border-left">
+                  <div>
+                    {{#if patient}}
+                    {{>patientProfile patient}}
+                    {{/if}}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</template>

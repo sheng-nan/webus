@@ -1,0 +1,119 @@
+<template name="addPrescription">
+    <div class="modal fade" id="addPrescriptionModal" tabindex="-1" role="dialog"
+         aria-labelledby="addPrescriptionModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width:960px;">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <span class="font-size-18">添加处方</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="关闭">
+                        <i class="fa fa-times"></i>
+                    </button>
+                </div>
+                {{#autoForm  id="addPrescriptionForm" collection="Laniakea.Collection.Prescriptions"}}
+                    <div class="modal-body">
+                        <fieldset>
+                            {{>afQuickField name="patid"  defaultValue=currentoutmedrecord.patid type="hidden"}}
+                            {{>afQuickField name="pat" type="hidden" defaultValue=currentoutmedrecord.pat}}
+                            {{>afQuickField name="age" type="hidden" defaultValue=currentoutmedrecord.age}}
+                            {{>afQuickField name="doc" type="hidden" defaultValue=currentoutmedrecord.doc}}
+                            {{>afQuickField name="hosid" type="hidden" defaultValue=currentoutmedrecord.hosid}}
+                            {{>afQuickField name="depid" type="hidden" defaultValue=currentoutmedrecord.depid}}
+                            {{>afQuickField name="sex" type="hidden" defaultValue=currentoutmedrecord.sex}}
+                            {{>afQuickField name="feetype" type="hidden" defaultValue=currentoutmedrecord.fetp}}
+                            <div class="col-sm-3">
+                                {{>afQuickField name="pat"  label=false id="show_pat" value=currentoutmedrecord.pat disabled='true'}}
+                            </div>
+                            <div class="col-sm-3">
+                                <input class="form-control" name="show_age" id="show_age"
+                                                         value="{{currentoutmedrecord.age}}" disabled>
+                            </div>
+                            <div class="col-sm-3">
+                                {{>afQuickField name="sex" defaultValue=currentoutmedrecord.sex id="show_sex"  label=false disabled='true'}}
+                            </div>
+                            <div class="col-sm-3">
+                                {{>afQuickField name="feetype" value=currentoutmedrecord.fetp  id="show_fetp" label=false disabled='true'}}
+                            </div>
+                            {{>afQuickField name="patstate" options="allowed" type="select-checkbox-inline" template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14" input-col-class="col-sm-10"}}
+                            <!--{{>afQuickField name="birthday" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="row col-sm-9" value=currentoutmedrecord.brithday}}-->
+                            <div class="form-group" data-required="true">
+                                <p><strong class="col-sm-2 control-label font-size-14">用药列表</strong></p>
+
+                                <div class="col-sm-10" id="drugs">
+                                        <table class="m-t gray-bg footable table toggle-arrow-tiny" data-page-size="15">
+                                            <thead>
+                                            <tr class="border-left-right border-top">
+                                                <th>名称</th>
+                                                <th data-hide="phone">规格</th>
+                                                <th data-hide="phone">单价</th>
+                                                <th data-hide="phone">数量</th>
+                                                <th data-hide="phone">单位</th>
+                                                <th data-hide="phone">用量</th>
+                                                <th data-hide="phone">用法</th>
+                                                <th data-hide="phone">皮试</th>
+                                                <th class="text-right">操作</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {{#each drugs}}
+                                                <tr class="m-t-xs border-left-right border-top border-bottom v-m">
+                                                    <td>{{name}}</td>
+                                                    <td>{{df}}</td>
+                                                    <td>{{price}}</td>
+                                                    <td>{{number}}</td>
+                                                    <td>{{du}}</td>
+                                                    <td>{{dosage}}</td>
+                                                    <td>{{usage}} </td>
+                                                    <td>{{skt}}</td>
+                                                    <td class="text-right">
+                                                        <div class="btn-group">
+                                                            <a class="delDrugListBtn btn btn-primary fa fa-minus"></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            {{/each}}
+                                            <tr class="m-t-xs border-left-right border-top border-bottom v-m">
+                                                <td colspan="2">
+                                                    <div id="search_drug">
+                                                        <input id="drugId" type="hidden" required>
+                                                        <input class="b-g" placeholder="查询药品" id="drug_input"
+                                                               style="width:186px" required>
+                                                    </div>
+                                                    {{>drugOption}}
+                                                </td>
+                                                <td><input placeholder="单价" style="width:40px" id="price" disabled></td>
+                                                <td><input class="b-g" placeholder="数量" value="1" type="number"
+                                                           style="width:40px" id="number"></td>
+                                                <td><input placeholder="单位" style="width:40px" id="drugUnit" disabled>
+                                                </td>
+                                                <td><input class="b-g" placeholder="用量" style="width:70px" id="dosage">
+                                                </td>
+                                                <td><input class="b-g" placeholder="用法" style="width:70px" id="usage">
+                                                </td>
+                                                <td><input id="skinTest" type="checkbox" value="是" class="m-r-xs"/>皮试
+                                                </td>
+                                                <td class="text-right">
+                                                    <div class="btn-group">
+                                                        <a id="addDrugListBtn" class="btn btn-primary fa fa-plus"></a>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    <span class="help-block"></span>
+                                </div>
+                            </div>
+                            {{>afQuickField name="fee" type="hidden"}}
+                            {{>afQuickField name="fee" template="bootstrap3-horizontal" label-class="col-sm-2 font-size-14 " input-col-class="col-sm-10" disabled="true"}}
+                            <!--{{>afQuickField name="company" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                            <!--{{>afQuickField name="drugs" template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}-->
+                            <div></div>
+                        </fieldset>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">添加</button>
+                    </div>
+                {{/autoForm}}
+            </div>
+        </div>
+    </div>
+</template>

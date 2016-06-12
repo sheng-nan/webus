@@ -1,0 +1,9 @@
+<template name="drugOption">
+    <div class="col-sm-12" id="drugDiv">
+        <ul class="search_list unstyled" style="font-size:12px !important;">
+            {{#each drugStocks}}
+                <li selValue="{{_id}}">{{name}},{{df}},{{sprice}},{{du}}</li>
+            {{/each}}
+        </ul>
+    </div>
+</template>

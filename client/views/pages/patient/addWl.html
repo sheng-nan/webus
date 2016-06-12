@@ -1,0 +1,36 @@
+<template name="addWl">
+    {{#autoForm  id="addPatWorkListForm"  collection="Laniakea.Collection.Worklists"  doc=selectedPatient
+    }}
+        <fieldset>
+            {{> afQuickField name='patid' value=selectedPatient._id id='patid' type='hidden' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='pat' value=selectedPatient.profile.name id='pat' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='sex' value=selectedPatient.profile.sex id='sex' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='age' value=patAge  id='age' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" readOnly='readOnly'}}
+            {{> afQuickField name='apmt' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='serv' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+            {{> afQuickField name='dev' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" options=devOptions}}
+            {{> afQuickField name='apldepid' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" type='hidden' value=dep_id}}
+            {{> afQuickField name='docid' type='hidden' id='pat_wl_docid' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"  readOnly='readOnly'}}
+            <div>
+                <label class="col-sm-2">检查医生</label>
+                <div class="col-sm-9">
+                    {{#each doctors}}
+                        {{>wlDoctorItem}}
+                    {{/each}}
+                </div>
+            </div>
+            <div>
+                <label class="col-sm-2">检查项</label>
+                <div class="col-sm-9">
+                    {{>wlExms}}
+                </div>
+            </div>
+            {{> afQuickField name='state' template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9" type='hidden' value=addState}}
+            {{> afQuickField name='desc'  template="bootstrap3-horizontal" label-class="col-sm-2" input-col-class="col-sm-9"}}
+        </fieldset>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">添加</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+        </div>
+    {{/autoForm}}
+</template>

@@ -1,0 +1,80 @@
+<template name="changeDrugs">
+    <!-- Modal -->
+    <div class="modal fade" id="changeDrugsModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog  modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">调整药食</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row m-b">
+                        <div class="col-sm-3">
+                            <button class="btn btn-primary btn-block m-b-xs">EGCG</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-primary btn-block  m-b-xs">枸杞口服液</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-primary btn-block  m-b-xs">阿胶口含片</button>
+                        </div>
+                        <div class="col-sm-3">
+                            <button class="btn btn-primary btn-block  m-b-xs">口服型胰岛素</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <table class="table">
+                            <thead style="background:#eee">
+                                <tr>
+                                    <th class="text-center">药品名称</th>
+                                    <th class="text-center">用量</th>
+                                    <th class="text-center">给药频次</th>
+                                    <th class="text-center">共计</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <input type="text" class="form-control" />
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control col-sm-8" />
+                                        </div>
+                                        袋
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" />
+                                        </div>
+                                        次/日
+                                    </td>
+                                    <td>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control col-sm-8" />
+                                        </div>
+                                        盒
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary"><i class="fa fa-times"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button type="button" class="btn btn-primary btn-block  m-b-xs">确定</button>
+                    </div>
+                    <div class="col-sm-4 ">
+                        <button type="button" class="btn btn-primary btn-block  m-b-xs" data-dismiss="modal">取消</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

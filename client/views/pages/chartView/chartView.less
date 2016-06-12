@@ -1,0 +1,149 @@
+@import "../../../../client/stylesheets/globals/variables.import.less";
+@import "../../../../client/stylesheets/globals/font.less";
+@min-height:107px;
+@min-height2:120px;
+@min-height3:228px;
+@light-gray:#ccc;
+@lighter-gray:#999;
+.bar{
+  height:50px;
+  position:relative;
+  padding-top:15px;
+}
+.bar_bg{
+  padding: 2px;
+  background: #EDF0F0;
+  border: 1px solid #dae2e5;
+  border-radius: 10px;
+  height:20px;
+}
+.bar_bg .progress-bar{
+  border-radius:10px;
+}
+.bar_bg .center-line{
+  position: absolute;
+  top:50%;
+  left: 50%;
+  height: 28px;
+  width: 1px;
+  margin-top:-14px;
+  background: @navy;
+}
+.bar_bg .font1{
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  color: #999999;
+}
+.bar_bg .font2{
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  color: #959595;
+}
+
+.min-height{
+  min-height:@min-height;
+}
+.min-height2{
+  min-height:@min-height2;
+}
+.min-height3{
+  min-height:@min-height3;
+}
+.light-gray{
+  color:@light-gray;
+}
+.font-green{
+  color:@navy !important;
+}
+.font-purple{
+  color:@purple !important;
+}
+.font-blue{
+  color:@blue !important;
+}
+.font-red{
+  color:@darkRed !important;
+}
+.font-gray{
+  color:@lighter-gray !important;
+}
+.ibox .ibox-title-blue,.ibox .ibox-title-green,.ibox .ibox-title-purple,.ibox .ibox-title-orange,.ibox .ibox-title-red{
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.ibox .ibox-blue,.ibox .ibox-green,.ibox .ibox-purple,.ibox .ibox-orange,.ibox .ibox-red{
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+.ibox .ibox-gray,.ibox .ibox-title-gray{
+  color:#333;
+  background-color: #f8f8f9;
+}
+.ibox .ibox-blue,.ibox .ibox-title-blue{
+  color:#ffffff;
+  background-color:@blue;
+}
+
+.ibox .ibox-green,.ibox .ibox-title-green{
+  color:#ffffff;
+  background-color:@navy;
+}
+
+.ibox .ibox-purple,.ibox .ibox-title-purple{
+  color:#ffffff;
+  background-color:@purple;
+}
+.ibox .ibox-orange,.ibox .ibox-title-orange{
+  color:#ffffff;
+  background-color:@orange;
+}
+
+.ibox .ibox-red,.ibox .ibox-title-red{
+  color:#ffffff;
+  background-color:@darkRed;
+}
+
+.ibox-title-purple .ibox-tools a,.ibox-title-green .ibox-tools a,.ibox-title-blue .ibox-tools a,.ibox-title-orange .ibox-tools a,.ibox-title-red .ibox-tools a{
+  color:#fff;
+  font-weight:lighter;
+}
+.border-top-white{
+  border-top:1px solid rgba(255, 255, 255, 0.3) !important
+}
+
+.ibox-title{
+  font-size:20px;
+  font-family: '华文细黑', '微软雅黑';
+  font-weight:lighter;
+}
+h1,h2,h3{
+font-family:@font-family-en,@font-family-base;
+}
+@media(max-width:768px){
+  .border-top{
+    border-top:1px solid #e7eaec;
+  }
+  .border-left,.border-right{
+    border-width:0px;
+  }
+}
+.form-lg-input{
+  height:50px;
+  border:1px solid #ddd;
+  border-radius:2px;
+
+}
+.chart .modal-footer{
+  position:relative;
+  height:80px;
+  font-family: "Microsoft YaHei",Arial;
+}
+.btn-center{
+  width:200px;
+  position:absolute;
+  left:50%;
+  margin-left:-100px;
+  height:50px;
+}

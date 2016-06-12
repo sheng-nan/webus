@@ -1,0 +1,50 @@
+<template name="medimgReportEditForm">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <span>报告内容</span>
+            <a class="label label-primary pull-right" id="saveReport"><i class="fa fa-floppy-o"></i></a>
+        </div>
+        <div class="ibox-content box-full-height">
+            {{# autoForm id='medimgReportEditForm' collection='Laniakea.Collection.MedimgReports' type='update' ws=ws doc=doc }}
+                <fieldset>
+                    <div class="row">
+                        <div class="col-sm-4">{{> afQuickField name='pat'  placeholder="患者姓名" label=false}}</div>
+                        <div class="col-sm-4">{{> afQuickField name='age' placeholder="患者年龄" label=false}}</div>
+                        <div class="col-sm-4">{{> afQuickField name='sex' placeholder="患者性别" label=false}}</div>
+                        <div class="col-sm-4">
+                            {{> afQuickField name='apldep'  placeholder="申请科室" label=false }}
+                        </div>
+                        <div class="col-sm-4">
+                            {{> afQuickField name='apldoc' placeholder="申请医生" label=false }}
+                        </div>
+                        <div class="col-sm-4">{{> afQuickField name='room' placeholder="诊室名称" label=false }}</div>
+                        {{#if itmIsExist}}
+                            <div class="col-sm-4">
+                                {{> afQuickField name='exmpt' id="exm_pt" placeholder="检查部位"  label=false }}
+                            </div>
+                            <div class="col-sm-4">
+                                <input name="item" data-schema-key="exmitm" type="hidden" id="exmItem">
+                                {{> afQuickField name='exmitm' id="exm_itm" placeholder="检查项目"  label=false}}
+                            </div>
+                        {{else}}
+                            <div class="col-sm-4">
+                                {{> afQuickField name='exmpt' id="exm_pt" placeholder="检查部位" options=exmptOptions  label=false }}
+                            </div>
+                            <div class="col-sm-4">
+                                <input name="item" data-schema-key="exmitm" type="hidden" id="exmItem">
+                                {{> afQuickField name='exmitm' id="exm_itm" placeholder="检查项目"  options=exmitmOptions  label=false}}
+                            </div>
+                            {{/if}}
+                                    <div class="col-sm-4"><input id="itm_fee" class="form-control" value="{{itm_fee}} " data-schema-key="fee" disabled></div>
+                        {{> afFieldInput name='doc' placeholder="检查项目" type="hidden"}}
+                        <div class="col-sm-4" style="display: none">{{> afQuickField name='state' placeholder="state" label=false }}</div>
+                    </div>
+                    <div class="clearfix"></div>
+                    {{> afQuickField name='find' placeholder="" rows="10" id="text1"}}
+                    {{> afQuickField name='hint' placeholder="" rows="10" id="text2"}}
+
+                </fieldset>
+            {{/ autoForm }}
+        </div>
+    </div>
+</template>
